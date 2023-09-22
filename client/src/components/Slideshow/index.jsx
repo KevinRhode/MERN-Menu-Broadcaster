@@ -49,7 +49,7 @@ function Slideshow() {
 
           >
            {/* {console.log(background)} */}
-           <p>Testing</p>
+           {/* <p>Testing</p> */}
             {/* <img src={background}  style={{ width: "100%", height: "auto"}} /> */}
           </div>
         ))}

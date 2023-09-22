@@ -4,6 +4,7 @@
     /* padding: 0.25rem; */
     text-align: center;
     display: flex;
+    flex-grow: 1;
   }
   
   html{
@@ -11,6 +12,8 @@
   }
   body{
     height: 100%;
+    display: flex;
+    margin: 0;
   }
   
 
