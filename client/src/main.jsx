@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Slideshow from './components/Slideshow/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, 
-        element: <Home />,
+        element: <Slideshow />,
       }, 
       {
         path: '/login',
@@ -27,10 +28,11 @@ const router = createBrowserRouter([
         element: <Signup />,
         errorElement: <NoMatch />
       },
-      //  {
-    //     path: '/success',
-    //     element: <Success />
-    //   }, {
+       {
+        path: '/home',
+        element: <Home />
+      }, 
+    // {
     //     path: '/orderHistory',
     //     element: <OrderHistory />
     //   }, {
