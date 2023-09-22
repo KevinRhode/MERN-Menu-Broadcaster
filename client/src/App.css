@@ -1,0 +1,102 @@
+#root {
+    /* max-width: 1280px; */
+    /* margin: 0 auto; */
+    /* padding: 0.25rem; */
+    text-align: center;
+    display: flex;
+  }
+  
+  html{
+    height: 100%;
+  }
+  body{
+    height: 100%;
+  }
+  
+
+  .logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+  }
+  .logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+  .logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+  }
+  
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+      animation: logo-spin infinite 20s linear;
+    }
+  }
+  
+  .card {
+    padding: 2em;
+  }
+  
+  .read-the-docs {
+    color: #888;
+  }
+  
+  
+  /* Slideshow */
+
+.slideshow {
+  /* flex-direction: column; */
+  margin: 0 auto;
+  overflow: hidden;
+  /* max-width: 500px; */
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1500ms;
+}
+
+.slide {
+  /* display: inline-block; */
+
+  height: 100%;
+  width: 100%;
+  border-radius: 40px;
+}
+.slide img {
+  /* height: 100%; */
+  /* width: 100%; */
+  /* object-fit: cover; */
+  border-radius: 20px;
+}
+
+/* Buttons */
+
+/* .slideshowDots {
+  text-align: center;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  margin: 15px 7px 0px;
+
+  background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+  background-color: #6a0dad;
+} */
