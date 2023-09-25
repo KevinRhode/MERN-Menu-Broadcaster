@@ -13,9 +13,9 @@ const SlideComponent = () => {
         <p>No slides available</p>
       ) : (
         data.getAllslides.map((slide) => (
-          <div key={slide._id} className="slide">
+          <div key={slide._id} className="slide-thumbnail">
             {/* Assuming the files are served from a /slides/ folder on the server */}
-            <img src={`/uploads/${slide.filename}.${slide.extname}`} alt={slide.filename} />
+            <img style={{width:'100%'}} src={`/uploads/${slide.filename}.${slide.extname}`} alt={slide.filename} />
             <p>{slide.filename}</p>
           </div>
         ))
