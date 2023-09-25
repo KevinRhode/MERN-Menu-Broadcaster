@@ -1,4 +1,5 @@
-const  User = require('../models/User');
+const User = require('../models/User');
+const Slide = require('../models/Slide');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 
@@ -11,6 +12,13 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    getAllslides: async (parent, args, context)=>{
+      if (context.user) {
+        const slides = await Slide.find();
+        return slides;
+      }
+    }
+
     
   },
   Mutation: {
@@ -19,7 +27,12 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-  
+    addSlide: async (parent, args, context) => {
+      if (context.user) {
+        const slide = await Slide.create(args);
+        return slide;
+      }
+    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });

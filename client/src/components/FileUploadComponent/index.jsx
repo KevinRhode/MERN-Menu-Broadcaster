@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_SLIDE } from '../../utils/mutations';
+
 import axios from 'axios'; // Assuming you're using axios for HTTP requests
 
 const FileUploadComponent = () => {
+  const [addSlide, { error }] = useMutation(ADD_SLIDE);
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
 
@@ -21,8 +25,16 @@ const FileUploadComponent = () => {
           'Content-Type': 'multipart/form-data'
         }
       });
-      
-      setMessage(response.data.message);
+      // console.log(response);
+      const {0:filename,1:extname} = response.data.file.split('\\')[2].split('.');
+      // console.log(response.data.file.split('\\')[2].split('.'));
+      // console.log(file);
+      // console.log(filename);
+      // console.log(extname);
+      const gqlResponse = await addSlide({variables:{filename,extname}});
+
+
+      setMessage(response.data.message + gqlResponse.data.message);
     } catch (error) {
       setMessage(error.response.data.error);
     }

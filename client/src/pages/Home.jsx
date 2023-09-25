@@ -8,7 +8,7 @@ const Home = () => {
      <div>
      <p>Home</p>
      <FileUploadComponent/>
-     <SlideComponent/>
+     {/* <SlideComponent/> */}
       </div>
      <div>
      <Slideshow/>
