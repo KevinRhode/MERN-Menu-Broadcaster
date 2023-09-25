@@ -69,11 +69,11 @@
 }
 
 .slide {
-  /* display: inline-block; */
+  display: inline-block;
 
   height: 100%;
   width: 100%;
-  border-radius: 40px;
+  /* border-radius: 40px; */
 }
 .slide img {
   /* height: 100%; */

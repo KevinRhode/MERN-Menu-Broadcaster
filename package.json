@@ -2,7 +2,7 @@
   "name": "mern-prostart",
   "version": "1.0.0",
   "description": "start your day like a pro",
-  "main": "server/server.js",
+  "main": "server/server.mjs",
   "scripts": {
     "start": "node server --ignore client",
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
@@ -22,4 +22,5 @@
   "engines": {
     "node": "16.x"
   }
+  
 }

@@ -20,3 +20,13 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const GET_ALL_SLIDES = gql`
+query GetSlides {
+  slides {
+    _id
+    filename
+    extname
+  }
+}
+`;

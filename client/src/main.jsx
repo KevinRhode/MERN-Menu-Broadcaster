@@ -7,7 +7,11 @@ import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Slideshow from './components/Slideshow/index.jsx';
+import SlideComponent from './components/Slide/index.jsx';
+import Slideshow from './components/Slideshow';
+import SlideShowDemo from './components/SlideShowDemo';
+import Fileupload from './components/FileUploadComponent/index.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -17,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, 
-        element: <Slideshow />,
+        element: <Home />,
       }, 
       {
         path: '/login',
@@ -32,6 +36,14 @@ const router = createBrowserRouter([
         path: '/home',
         element: <Home />
       }, 
+      {
+        path: '/ss/:id',
+        element: <Slideshow />
+      }, 
+      {
+        path: '/demo',
+        element: <SlideShowDemo />
+      }    
     // {
     //     path: '/orderHistory',
     //     element: <OrderHistory />
