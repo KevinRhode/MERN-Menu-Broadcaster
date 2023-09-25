@@ -57,7 +57,7 @@ const startApolloServer = async () => {
 
   // Serve up static assets
   app.use("/images", express.static(path.join(__dirname, "../client/images")));
-
+  app.use("/uploads",express.static('public/uploads'));
   app.use(
     "/graphql",
     expressMiddleware(server, {

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, useQuery } from "@apollo/client";
+
 import { ADD_SLIDE } from '../../utils/mutations';
 
 import axios from 'axios'; // Assuming you're using axios for HTTP requests
@@ -34,7 +35,7 @@ const FileUploadComponent = () => {
       const gqlResponse = await addSlide({variables:{filename,extname}});
 
 
-      setMessage(response.data.message + gqlResponse.data.message);
+      setMessage(response.data.message + gqlResponse);
     } catch (error) {
       setMessage(error.response.data.error);
     }

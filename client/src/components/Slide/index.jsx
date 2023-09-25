@@ -9,13 +9,13 @@ const SlideComponent = () => {
     if (error) return <p>Error: {error.message}</p>;
   return (
     <div className="slide-container">
-      {slides.length === 0 ? (
+      {data.getAllslides.length === 0 ? (
         <p>No slides available</p>
       ) : (
-        slides.map((slide) => (
+        data.getAllslides.map((slide) => (
           <div key={slide._id} className="slide">
             {/* Assuming the files are served from a /slides/ folder on the server */}
-            <img src={`/uploads/${slide.filename}${slide.extname}`} alt={slide.filename} />
+            <img src={`/uploads/${slide.filename}.${slide.extname}`} alt={slide.filename} />
             <p>{slide.filename}</p>
           </div>
         ))
