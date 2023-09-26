@@ -2,6 +2,8 @@ import FileUploadComponent from "../components/FileUploadComponent";
 import SlideComponent from "../components/Slide";
 import Slideshow from "../components/Slideshow";
 
+
+
 const Home = () => {
   return (
     <div className="container">
@@ -12,8 +14,7 @@ const Home = () => {
       </div>
      <div>
      <Slideshow/>
-     </div>
-    
+     </div>    
     </div>
   );
 };

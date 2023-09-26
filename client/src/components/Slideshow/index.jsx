@@ -51,12 +51,12 @@ function Slideshow() {
           <div
             className="slide"
             key={index}           
-            style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
+            // style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
 
           >
            {/* {console.log(background)} */}
            {/* <p>Testing</p> */}
-            {/* <img src={background}  style={{ width: "100%", height: "auto"}} /> */}
+            <img src={background}  style={{ width: "100%", height: "auto"}} />
           </div>
         ))}
       </div>

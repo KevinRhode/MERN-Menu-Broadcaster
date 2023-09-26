@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import CreateSlideShow from './pages/CreateSlideShow.jsx';
 import SlideComponent from './components/Slide/index.jsx';
 import Slideshow from './components/Slideshow';
 import SlideShowDemo from './components/SlideShowDemo';
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
       {
         path: '/demo',
         element: <SlideShowDemo />
-      }    
+      },
+      {
+        path:'/create',
+        element:<CreateSlideShow/>
+      }
     // {
     //     path: '/orderHistory',
     //     element: <OrderHistory />

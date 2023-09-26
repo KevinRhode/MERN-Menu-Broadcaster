@@ -82,24 +82,14 @@
   border-radius: 20px;
 }
 
-/* Buttons */
-
-/* .slideshowDots {
-  text-align: center;
+/* slide thumbnail */
+.slide-thumbnail {
+  padding: 0.25rem 0;
+  max-width: 170px;
 }
 
-.slideshowDot {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-
-  cursor: pointer;
-  margin: 15px 7px 0px;
-
-  background-color: #c4c4c4;
+.slide-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
-
-.slideshowDot.active {
-  background-color: #6a0dad;
-} */

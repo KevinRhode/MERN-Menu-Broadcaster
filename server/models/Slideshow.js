@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 
 const slideshowSchema = new Schema({
   slides: {
-    type: Schema.Types.ObjectId,
+    type: [Schema.Types.ObjectId],
     ref: "Slide",
   },
   comments: {
@@ -15,6 +15,6 @@ const slideshowSchema = new Schema({
 
 });
 
-const Slideshow = mongoose.model('Slideshow', userSchema);
+const Slideshow = mongoose.model('Slideshow', slideshowSchema);
 
 module.exports = Slideshow;

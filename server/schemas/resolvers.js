@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const Slide = require('../models/Slide');
+const SlideShow = require('../models/SlideShow');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const Slideshow = require('../models/SlideShow');
 
 
 const resolvers = {
@@ -17,6 +19,16 @@ const resolvers = {
         const slides = await Slide.find();
         return slides;
       }
+    },
+    getAllslideshow: async (parents,args, context)=>{
+      if (context.user) {
+        const slideshows = await SlideShow.find().populate('slides');
+        return slideshows;
+      }
+    },
+    getSlideshow: async (parents,{id}) =>{
+      const slideshow = await Slideshow.findById(id).populate('slides');
+      return slideshow;
     }
 
     
@@ -31,6 +43,12 @@ const resolvers = {
       if (context.user) {
         const slide = await Slide.create(args);
         return slide;
+      }
+    },
+    addSlideshow: async (parent, args, context)=>{
+      if (context.user) {
+        const slideshow = await SlideShow.create(args);
+        return slideshow;
       }
     },
     updateUser: async (parent, args, context) => {

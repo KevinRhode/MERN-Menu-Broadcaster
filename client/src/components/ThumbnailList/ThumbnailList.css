@@ -1,0 +1,29 @@
+.thumbnail-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .thumbnail {
+    width: 170px;
+    height: 100px;
+    margin: 5px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .thumbnail.selected {
+    outline: 3px solid blue; /* Highlight border to show selection */
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3px 8px;
+    border-radius: 15px;
+  }
+  

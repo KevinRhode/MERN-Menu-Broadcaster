@@ -33,7 +33,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_SLIDE = gql`
-  mutation Mutation($filename: String!, $extname: String!) {
+  mutation addSlide($filename: String!, $extname: String!) {
     addSlide(filename: $filename, extname: $extname) {
       _id
       filename
@@ -41,3 +41,17 @@ export const ADD_SLIDE = gql`
     }
   }
 `;
+
+export const ADD_SLIDESHOW = gql`
+mutation addSlideshow($slides: [ID]!, $comments: String) {
+  addSlideshow(slides: $slides, comments: $comments) {
+    comments
+    _id
+    slides {
+      _id
+    }
+  }
+}
+
+
+`

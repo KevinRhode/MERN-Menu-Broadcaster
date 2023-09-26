@@ -30,3 +30,32 @@ export const GET_ALL_SLIDES = gql`
   }
 }
 `;
+
+export const GET_ALL_SLIDESHOWS = gql`
+{
+  getAllslideshow {
+    _id
+    comments
+    slides {
+      extname
+      filename
+      _id
+    }
+  }
+}
+`;
+
+export const GET_SLIDESHOW = gql`
+
+ {
+  getSlideshow(id: $getSlideshowId) {
+    comments
+    slides {
+      extname
+      filename
+      _id
+    }
+    _id
+  }
+}
+`;

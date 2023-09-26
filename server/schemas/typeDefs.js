@@ -25,7 +25,8 @@ const typeDefs = `
   type Query {    
     user: User
     getAllslides: [Slide]
-    getAllslideshow: Slideshow    
+    getAllslideshow: [Slideshow]  
+    getSlideshow(id: String!): Slideshow
   }
 
   type Mutation {
