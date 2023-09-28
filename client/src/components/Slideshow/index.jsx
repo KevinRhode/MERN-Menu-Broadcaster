@@ -10,12 +10,19 @@ const images = [image2,image, image3, image4]
 const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 const delay = 5000;
 
-function Slideshow() {
+function Slideshow(props) {
   const { id } = useParams();
 //   const { loading, data } = useQuery(GET_SLIDESHOW, {
 //     variables: { getSlideshowById: id },
 // });
-
+ const show = [];
+  props.images.forEach(element => {
+    element.slides.forEach(element2 => {
+      show.push(element2)
+    })
+  });
+  console.log(show);
+  console.log(props.images);
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
 
@@ -30,7 +37,7 @@ function Slideshow() {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+          prevIndex === show.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -47,7 +54,8 @@ function Slideshow() {
         className="slideshowSlider"
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, flexGrow:'1' }}
       >
-        {images.map((background, index) => (
+        
+        {show.map((background, index) => (
           <div
             className="slide"
             key={index}           
@@ -56,14 +64,14 @@ function Slideshow() {
           >
            {/* {console.log(background)} */}
            {/* <p>Testing</p> */}
-            <img src={background}  style={{ width: "100%", height: "auto"}} />
+            <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}   style={{ width: "100%", height: "auto"}} />
           </div>
         ))}
       </div>
 
      
     </div>
-     <div className="slideshowDots" style={{position:'absolute'}}>
+     {/* <div className="slideshowDots" style={{position:'absolute'}}>
      {images.map((_, idx) => (
        <div
          key={idx}
@@ -73,7 +81,7 @@ function Slideshow() {
          }}
        ></div>
      ))}
-   </div>
+   </div> */}
    </>
   );
 }

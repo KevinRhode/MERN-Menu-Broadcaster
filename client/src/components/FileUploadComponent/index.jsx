@@ -35,7 +35,7 @@ const FileUploadComponent = () => {
       const gqlResponse = await addSlide({variables:{filename,extname}});
 
 
-      setMessage(response.data.message + gqlResponse);
+      setMessage(response.data.message);
     } catch (error) {
       setMessage(error.response.data.error);
     }

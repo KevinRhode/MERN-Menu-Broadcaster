@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const Slide = require('../models/Slide');
-const SlideShow = require('../models/SlideShow');
+const Slideshow = require('../models/Slideshow');
 const Endpoint = require('../models/Endpoint');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
@@ -23,7 +23,7 @@ const resolvers = {
     },
     getAllslideshow: async (parents,args, context)=>{
       if (context.user) {
-        const slideshows = await SlideShow.find().populate('slides');
+        const slideshows = await Slideshow.find().populate('slides');
         return slideshows;
       }
     },
@@ -32,11 +32,10 @@ const resolvers = {
       return slideshow;
     },
     getEndpoint: async (parent, {index}) => {
-      if (context.user) {
-        const endpoint = await Endpoint.findOne({ index: index }).populate('slideshows').populate('slides');
+      
+        const endpoint = await Endpoint.findOne({ index: index }).populate({path:'slideshows',populate:{path:'slides'}});
         return endpoint;
-      }
-      throw AuthenticationError;
+      
     }
 
     
@@ -58,6 +57,13 @@ const resolvers = {
         const slideshow = await SlideShow.create(args);
         return slideshow;
       }
+    },
+    addEndpoint: async (parent, args, context)=> {
+      if (context.user) {
+        const endpoint = await Endpoint.create(args);
+        return endpoint;
+      }
+      throw AuthenticationError;
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {

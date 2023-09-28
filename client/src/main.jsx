@@ -12,6 +12,7 @@ import SlideComponent from './components/Slide/index.jsx';
 import Slideshow from './components/Slideshow';
 import SlideShowDemo from './components/SlideShowDemo';
 import Fileupload from './components/FileUploadComponent/index.jsx';
+import Endpoint from './pages/Endpoints.jsx'
 
 
 const router = createBrowserRouter([
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       }, 
       {
         path: '/ss/:id',
-        element: <Slideshow />
+        element: <Endpoint />
       }, 
       {
         path: '/demo',

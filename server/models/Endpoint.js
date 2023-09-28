@@ -8,8 +8,8 @@ const endpointSchema = new Schema({
     type: [Schema.Types.ObjectId],
     ref: "Slideshow",
   },
-  index: {
-    type: Number,
+  deviceId: {
+    type: String,
     required: true,
     unique: true,
   },

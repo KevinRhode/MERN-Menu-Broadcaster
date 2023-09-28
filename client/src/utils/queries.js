@@ -59,3 +59,21 @@ export const GET_SLIDESHOW = gql`
   }
 }
 `;
+
+export const GET_ENDPOINT = gql`
+query getEndpoint($getEndpointId: String!) {
+  getEndpoint(id: $getEndpointId) {
+    deviceId
+    _id
+    slideshows {
+      _id
+      comments
+      slides {
+        extname
+        filename
+        _id
+      }
+    }
+  }
+}
+`;

@@ -52,6 +52,16 @@ mutation addSlideshow($slides: [ID]!, $comments: String) {
     }
   }
 }
-
-
 `
+
+export const ADD_ENDPOINT = gql`
+mutation Mutation($slideshows: [ID]!, $deviceId: String!) {
+  addEndpoint(slideshows: $slideshows, deviceId: $deviceId) {
+    deviceId
+    _id
+    slideshows {
+      _id
+    }
+  }
+}
+`;

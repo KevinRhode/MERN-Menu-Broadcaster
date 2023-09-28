@@ -6,19 +6,23 @@ const typeDefs = `
     lastName: String
     email: String
   }
+
   type Slide {
     _id: ID
     filename: String!
     extname: String!
   }
+
   type Slideshow {
     _id: ID
     slides: [Slide]    
     comments: String
   }
+
   type Endpoint {
     _id: ID
-    shows: [ID]
+    slideshows: [Slideshow]
+    deviceId: String!
   }
 
   type Auth {
@@ -28,15 +32,15 @@ const typeDefs = `
 
   type Query {    
     user: User
-    getEndpoint: Endpoint
+    getEndpoint(id: String!): Endpoint
     getAllslides: [Slide]
     getAllslideshow: [Slideshow]  
     getSlideshow(id: String!): Slideshow
   }
 
   type Mutation {
-    addEndpoint(shows: [ID]!): Endpoint
-    updateEndpoint(_id: ID!, shows: [ID]): Endpoint
+    addEndpoint(slideshows: [ID]!, deviceId: String!): Endpoint
+    updateEndpoint(_id: ID!, slideshows: [ID]): Endpoint
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth  
     addSlide(filename: String!, extname: String!): Slide  
     addSlideshow(slides: [ID]!, comments: String): Slideshow
