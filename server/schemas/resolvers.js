@@ -1,8 +1,9 @@
 const User = require('../models/User');
 const Slide = require('../models/Slide');
 const SlideShow = require('../models/SlideShow');
+const Endpoint = require('../models/Endpoint');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const Slideshow = require('../models/SlideShow');
+
 
 
 const resolvers = {
@@ -29,6 +30,13 @@ const resolvers = {
     getSlideshow: async (parents,{id}) =>{
       const slideshow = await Slideshow.findById(id).populate('slides');
       return slideshow;
+    },
+    getEndpoint: async (parent, {index}) => {
+      if (context.user) {
+        const endpoint = await Endpoint.findOne({ index: index }).populate('slideshows').populate('slides');
+        return endpoint;
+      }
+      throw AuthenticationError;
     }
 
     
