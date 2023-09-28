@@ -5,7 +5,7 @@ import { ADD_SLIDE } from '../../utils/mutations';
 
 import axios from 'axios'; // Assuming you're using axios for HTTP requests
 
-const FileUploadComponent = () => {
+const FileUploadComponent = (props) => {
   const [addSlide, { error }] = useMutation(ADD_SLIDE);
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState('');
@@ -33,7 +33,7 @@ const FileUploadComponent = () => {
       // console.log(filename);
       // console.log(extname);
       const gqlResponse = await addSlide({variables:{filename,extname}});
-
+      props.addSlide()
 
       setMessage(response.data.message);
     } catch (error) {
