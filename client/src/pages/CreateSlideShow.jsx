@@ -10,6 +10,15 @@ import { useNavigate } from "react-router-dom";
 
 const CreateSlideShow = (props) => {
   const [listState, setListState] = useState([...props.slides]);
+  const [formState, setFormState] = useState({slideName:''});
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error: {error.message}</p>;
   useEffect(() => {
@@ -24,7 +33,7 @@ const CreateSlideShow = (props) => {
     if (token === null) navigate('/login');
     const { loading, error:loadingError, data } = useQuery(GET_ALL_SLIDES);
     const handleCreate = async (ids) => {
-      const createShow = await addSlideshow({variables:{slides:[...ids]},context: authContext})
+      const createShow = await addSlideshow({variables:{slides:[...ids],slideName:formState.slideName},context: authContext})
       props.addSlideshow(createShow.data.addSlideshow);
     }
     if (loading) return <p>Loading...</p>;
@@ -32,7 +41,7 @@ const CreateSlideShow = (props) => {
   return (
     <div className="container"> 
       <h1>Create Slide Show</h1>
-      <ThumbnailList images={listState} handleCreate={handleCreate}/>
+      <ThumbnailList images={listState} handleCreate={handleCreate} handleChange={handleChange}/>
 
      </div>
   );

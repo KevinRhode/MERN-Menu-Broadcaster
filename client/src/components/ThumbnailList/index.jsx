@@ -29,6 +29,14 @@ function ThumbnailList(props) {
       ))}
       
     </div>
+    <label htmlFor="slideName">Slideshow Name: </label>
+          <input
+            placeholder=""
+            name="slideName"
+            type="String"
+            id="slideName"
+            onChange={props.handleChange}
+          />
     <button onClick={() => props.handleCreate(selectedImages)}>Create Slideshow</button>
     </div>
   );

@@ -8,6 +8,8 @@ function EndpointCreator(props) {
   const [addEndpoint] = useMutation(ADD_ENDPOINT);
 
   const [selectedSlideshows, setSelectedSlideshows] = useState([]);
+  
+  const [formState, setFormState] = useState({ deviceID: '' });
 
   // useEffect(() => {
   //   if (slideshowError) {
@@ -15,9 +17,16 @@ function EndpointCreator(props) {
   //   }
   // }, [slideshowError]);
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
   const handleSubmit = async () => {
     try {
-      const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: "2" } });      
+      const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });      
       console.log("Endpoint created:", result);
     } catch (err) {
       console.error("Failed to create endpoint:", err);
@@ -45,6 +54,14 @@ function EndpointCreator(props) {
           {slideshow._id}
         </div>
       ))}
+      <label htmlFor="deviceID">Device Endpoint: </label>
+          <input
+            placeholder=""
+            name="deviceID"
+            type="number"
+            id="deviceID"
+            onChange={handleChange}
+          />
       <button onClick={handleSubmit}>Create Endpoint</button>
     </div>
   );

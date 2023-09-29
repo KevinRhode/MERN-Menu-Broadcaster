@@ -43,10 +43,10 @@ const typeDefs = `
     updateEndpoint(_id: ID!, slideshows: [ID]): Endpoint
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth  
     addSlide(filename: String!, extname: String!): Slide  
-    addSlideshow(slides: [ID]!, comments: String): Slideshow
+    addSlideshow(slides: [ID]!, comments: String,slideName: String!): Slideshow
     updateUser(firstName: String, lastName: String, email: String, password: String): User    
     updateSlide(filename: String, extname: String): Slide
-    updateSlideshow(slides: [ID], comments: String): Slideshow
+    updateSlideshow(slides: [ID], comments: String,slideName: String!): Slideshow
     login(email: String!, password: String!): Auth
   }
 `;

@@ -12,6 +12,10 @@ const slideshowSchema = new Schema({
     type: String,
     required: false,
   },
+  slideName:{
+    type: String,
+    required: true,
+  }
 
 });
 
