@@ -29,7 +29,7 @@ function ThumbnailList(props) {
       ))}
       
     </div>
-    <button onClick={() => props.handleCreate(selectedImages)}/>
+    <button onClick={() => props.handleCreate(selectedImages)}>Create Slideshow</button>
     </div>
   );
 }
