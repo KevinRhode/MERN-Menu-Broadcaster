@@ -33,7 +33,7 @@ const FileUploadComponent = (props) => {
       // console.log(filename);
       // console.log(extname);
       const gqlResponse = await addSlide({variables:{filename,extname}});
-      props.addSlide()
+      props.addSlide(gqlResponse.data.addSlide);
 
       setMessage(response.data.message);
     } catch (error) {

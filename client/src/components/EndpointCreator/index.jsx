@@ -1,22 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
-const GET_ALL_SLIDESHOWS = gql`
-  query getAllslideshow {
-    getAllslideshow {
-      _id
-    }
-  }
-`;
-
-const ADD_ENDPOINT = gql`
-  mutation addEndpoint($shows: [ID]!) {
-    addEndpoint(shows: $shows) {
-      _id
-    }
-  }
-`;
+import { GET_ALL_SLIDESHOWS, ADD_ENDPOINT } from "../../utils/queries";
 
 function EndpointCreator() {
   const { data: slideshowData, loading: slideshowLoading, error: slideshowError } = useQuery(GET_ALL_SLIDESHOWS);

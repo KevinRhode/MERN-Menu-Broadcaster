@@ -5,12 +5,16 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_ALL_SLIDES } from '../utils/queries';
 import { ADD_SLIDESHOW } from "../utils/mutations";
 
+import { useNavigate } from "react-router-dom";
+
 const CreateSlideShow = () => {
+  const navigate = useNavigate();
   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const authContext = {
     headers: { Authorization: `Bearer ${token}` },
   };
     const [addSlideshow, { error }] = useMutation(ADD_SLIDESHOW);
+    if (token === null) navigate('/login');
     const { loading, error:loadingError, data } = useQuery(GET_ALL_SLIDES);
     const handleCreate = async (ids) => {
       const createShow = await addSlideshow({variables:{slides:[...ids]},context: authContext})

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App.jsx';
+import auth from './utils/auth.js';
 import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
@@ -13,6 +14,7 @@ import Slideshow from './components/Slideshow';
 import SlideShowDemo from './components/SlideShowDemo';
 import Fileupload from './components/FileUploadComponent/index.jsx';
 import Endpoint from './pages/Endpoints.jsx'
+import EndpointCreator from './components/EndpointCreator/index.jsx'
 
 
 const router = createBrowserRouter([
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
       {
         path:'/create',
         element:<CreateSlideShow/>
+      },
+      {
+        path:'/endpoint',
+        element:<EndpointCreator/>
       }
     // {
     //     path: '/orderHistory',

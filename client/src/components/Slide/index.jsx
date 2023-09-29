@@ -7,6 +7,9 @@ const SlideComponent = (props) => {
     const [listState, setListState] = useState([...props.slides]);
     // if (loading) return <p>Loading...</p>;
     // if (error) return <p>Error: {error.message}</p>;
+    useEffect(() => {
+      setListState([...props.slides]);
+    }, [props.slides]);
   return (
     <div className="slide-container">
       {listState.length === 0 ? (

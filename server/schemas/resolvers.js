@@ -54,7 +54,7 @@ const resolvers = {
     },
     addSlideshow: async (parent, args, context)=>{
       if (context.user) {
-        const slideshow = await SlideShow.create(args);
+        const slideshow = await Slideshow.create(args);
         return slideshow;
       }
     },
