@@ -28,14 +28,22 @@ const resolvers = {
       }
     },
     getSlideshow: async (parents,{id}) =>{
+      if (context.user) {
       const slideshow = await Slideshow.findById(id).populate('slides');
       return slideshow;
+    }
     },
-    getEndpoint: async (parent, {index}) => {
+    getEndpoint: async (parent, {id}) => {
       
-        const endpoint = await Endpoint.findOne({ index: index }).populate({path:'slideshows',populate:{path:'slides'}});
+        const endpoint = await Endpoint.findOne({deviceId:id}).populate({path:'slideshows',populate:{path:'slides'}});
         return endpoint;
       
+    },
+    getAllEndpoints: async (parent, args, context) => {
+      // if (context.user) {
+        const endpoints = await Endpoint.find().populate({path:'slideshows',populate:{path:'slides'}});
+        return endpoints;
+      // }
     }
 
     

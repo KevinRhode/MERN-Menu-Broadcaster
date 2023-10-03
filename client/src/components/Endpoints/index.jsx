@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './ThumbnailList.css';
+import './Endpoints.css';
 
 
-function ThumbnailList(props) {
+function EndpointList(props) {
   const [selectedImages, setSelectedImages] = useState([]);
 
   const handleImageClick = (id) => {
@@ -16,11 +16,11 @@ function ThumbnailList(props) {
   console.log(selectedImages);
   return (
     <div>
-    <div className="thumbnail-list">
+    <div className="endpoint-list">
       {props.images.map((slide) => (
         <div
           key={slide._id}
-          className={`thumbnail ${selectedImages.includes(slide._id) ? 'selected' : ''}`}
+          className={`endpoint ${selectedImages.includes(slide._id) ? 'selected' : ''}`}
           onClick={() => handleImageClick(slide._id)}
           style={{ backgroundImage: `url(${'/uploads/'+slide.filename + '.' +slide.extname})` }}
         >
@@ -42,4 +42,4 @@ function ThumbnailList(props) {
   );
 }
 
-export default ThumbnailList;
+export default EndpointList;

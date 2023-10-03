@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateSlideShow = (props) => {
   const [listState, setListState] = useState([...props.slides]);
-  const [formState, setFormState] = useState({slideName:''});
+  const [formState, setFormState] = useState({slideshowName:''});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -33,7 +33,7 @@ const CreateSlideShow = (props) => {
     if (token === null) navigate('/login');
     const { loading, error:loadingError, data } = useQuery(GET_ALL_SLIDES);
     const handleCreate = async (ids) => {
-      const createShow = await addSlideshow({variables:{slides:[...ids],slideName:formState.slideName},context: authContext})
+      const createShow = await addSlideshow({variables:{slides:[...ids],slideshowName:formState.slideshowName},context: authContext})
       props.addSlideshow(createShow.data.addSlideshow);
     }
     if (loading) return <p>Loading...</p>;

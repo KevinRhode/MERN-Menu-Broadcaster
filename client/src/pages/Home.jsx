@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, {useEffect} from "react";
-import { QUERY_USER, GET_ALL_SLIDES,GET_ALL_SLIDESHOWS } from '../utils/queries';
+import { QUERY_USER, GET_ALL_SLIDES,GET_ALL_SLIDESHOWS, GET_ALL_ENDPOINTS } from '../utils/queries';
 import Dashboard from "./Dashboard";
 import Nav from "../components/Nav";
 import auth from "../utils/auth";
@@ -10,6 +10,7 @@ const Home = () => {
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
   const { loading, error, data } = useQuery(GET_ALL_SLIDES); 
   const { data: slideshowData, loading: slideshowLoading, error: slideshowError } = useQuery(GET_ALL_SLIDESHOWS);
+  const { loading: endpointsLoading, data: endpointsData, error: endpointsError } = useQuery(GET_ALL_ENDPOINTS);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -21,12 +22,13 @@ const Home = () => {
 if (userLoading) return <p>Loading User Infomation...</p>;
 if (loading) return <p>Loading Slide Infomation...</p>;
 if (slideshowLoading) return <p>Loading Slideshow Information...</p>
+if (endpointsLoading) return <p>Loading Endpoints Information...</p>
 if (error) return <p>Error: {error.message}</p>;
   
   return (
     <>
    
-    <Dashboard slides={data.getAllslides} slideshows={slideshowData.getAllslideshow}/>
+    <Dashboard slides={data.getAllslides} slideshows={slideshowData.getAllslideshow} endpoints={endpointsData.getAllEndpoints}/>
     
     </>
   );

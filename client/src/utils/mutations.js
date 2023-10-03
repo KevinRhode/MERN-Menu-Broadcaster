@@ -43,10 +43,10 @@ export const ADD_SLIDE = gql`
 `;
 
 export const ADD_SLIDESHOW = gql`
-mutation addSlideshow($slides: [ID]!, $comments: String,$slideName: String) {
-  addSlideshow(slides: $slides, comments: $comments, slideName: $slideName) {
+mutation addSlideshow($slides: [ID]!, $comments: String,$slideshowName: String!) {
+  addSlideshow(slides: $slides, comments: $comments, slideshowName: $slideshowName) {
     comments
-    slideName
+    slideshowName
     _id
     slides {
       _id

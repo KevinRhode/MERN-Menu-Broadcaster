@@ -17,6 +17,7 @@ const Dashboard = (props) => {
 
   const [slides, setSlides] = useState([...props.slides]);
   const [slideshows, setSlideshows] = useState([...props.slideshows]);
+  const [endpoints, setEndpoints] = useState([...props.endpoints]);
 
   const addSlide = (slide) => {
     setSlides([...slides, slide]);
@@ -24,11 +25,9 @@ const Dashboard = (props) => {
   const addSlideshow = (slideshow)=> {
     setSlideshows([...slideshows,slideshow]);
   }
-
-  
-if (userLoading) return <p>Loading User Infomation...</p>;
-if (loading) return <p>Loading Slide Infomation...</p>;
-if (error) return <p>Error: {error.message}</p>;
+  const addEndpoint = (endpoint) => {
+    setEndpoints([...endpoints, endpoint]);
+  }
   
   return (
     <div className="container">
@@ -38,8 +37,10 @@ if (error) return <p>Error: {error.message}</p>;
      <FileUploadComponent addSlide={addSlide}/>
      
      {/* {data && (<SlideComponent slides={slides}/>)} */}
-     {data && (<CreateSlideShow slides={slides} addSlideshow={addSlideshow} />)}
-     {data && (<EndpointCreator slideshows={slideshows} />)}
+     {slides && (<CreateSlideShow slides={slides} addSlideshow={addSlideshow} />)}
+     {slideshows && (<EndpointCreator slideshows={slideshows} />)}
+
+
       </div>
        
     </div>

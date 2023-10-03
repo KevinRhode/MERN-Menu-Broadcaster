@@ -51,7 +51,7 @@ function EndpointCreator(props) {
               }
             }}
           />
-          {slideshow._id}
+          {slideshow.slideshowName}
         </div>
       ))}
       <label htmlFor="deviceID">Device Endpoint: </label>

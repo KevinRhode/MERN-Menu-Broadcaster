@@ -12,7 +12,7 @@ const slideshowSchema = new Schema({
     type: String,
     required: false,
   },
-  slideName:{
+  slideshowName:{
     type: String,
     required: true,
   }

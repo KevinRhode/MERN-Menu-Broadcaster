@@ -17,6 +17,7 @@ const typeDefs = `
     _id: ID
     slides: [Slide]    
     comments: String
+    slideshowName: String
   }
 
   type Endpoint {
@@ -36,6 +37,7 @@ const typeDefs = `
     getAllslides: [Slide]
     getAllslideshow: [Slideshow]  
     getSlideshow(id: String!): Slideshow
+    getAllEndpoints: [Endpoint]
   }
 
   type Mutation {
@@ -43,10 +45,10 @@ const typeDefs = `
     updateEndpoint(_id: ID!, slideshows: [ID]): Endpoint
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth  
     addSlide(filename: String!, extname: String!): Slide  
-    addSlideshow(slides: [ID]!, comments: String,slideName: String!): Slideshow
+    addSlideshow(slides: [ID]!, comments: String,slideshowName: String!): Slideshow
     updateUser(firstName: String, lastName: String, email: String, password: String): User    
     updateSlide(filename: String, extname: String): Slide
-    updateSlideshow(slides: [ID], comments: String,slideName: String!): Slideshow
+    updateSlideshow(slides: [ID], comments: String,slideshowName: String): Slideshow
     login(email: String!, password: String!): Auth
   }
 `;

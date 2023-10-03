@@ -27,10 +27,29 @@ export const GET_ALL_SLIDESHOWS = gql`
   getAllslideshow {
     _id
     comments
+    slideshowName
     slides {
       extname
       filename
       _id
+    }
+  }
+}
+`;
+export const GET_ALL_ENDPOINTS = gql`
+{
+  getAllEndpoints {
+    _id
+    deviceId
+    slideshows {
+      _id
+      comments
+      slideshowName
+      slides {
+        _id
+        extname
+        filename
+      }
     }
   }
 }
@@ -41,6 +60,7 @@ export const GET_SLIDESHOW = gql`
  {
   getSlideshow(id: $getSlideshowId) {
     comments
+    slideshowName
     slides {
       extname
       filename
@@ -64,6 +84,7 @@ query getEndpoint($getEndpointId: String!) {
         filename
         _id
       }
+      slideshowName
     }
   }
 }
