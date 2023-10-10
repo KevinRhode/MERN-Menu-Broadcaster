@@ -25,7 +25,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, 
-        element: <SlideShowDemo />,
+        element: <SlideShowDemo />,        
+        errorElement: <NoMatch />
       }, 
       {
         path: '/login',
@@ -38,23 +39,32 @@ const router = createBrowserRouter([
       },
        {
         path: '/home',
-        element: <Home />
+        element: <Home />,
+        errorElement: <NoMatch />
       }, 
       {
         path: '/ss/:id',
-        element: <Endpoint />
+        element: <Endpoint />,
+        errorElement: <NoMatch />
       }, 
       {
         path: '/demo',
-        element: <SlideShowDemo />
+        element: <SlideShowDemo />,
+        errorElement: <NoMatch />
       },
       {
         path:'/create',
-        element:<CreateSlideShow/>
+        element:<CreateSlideShow/>,
+        errorElement: <NoMatch />
       },
       {
         path:'/endpoint',
-        element:<EndpointCreator/>
+        element:<EndpointCreator/>,
+        errorElement: <NoMatch />
+      },
+      {
+        path:'*',
+        element:<NoMatch/>
       }
     // {
     //     path: '/orderHistory',

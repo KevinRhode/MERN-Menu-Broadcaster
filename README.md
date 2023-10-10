@@ -26,10 +26,10 @@ Mongo DB -
 Node.js - Verison 16.18.0
   [DownloadLinks](https://nodejs.org/download/release/v16.18.0/)
   Install Node.js
-  ```md
+  
 
 ## Usage
-
+```md
 Menu Software
 Software to display Slides/Menus of our choosing to each Device
 TV uses embed browser
@@ -43,13 +43,21 @@ Upselling
     broadcast groups images, names, as you enter
     welcomes
     more frequently updated information
-
+```
 ## Current Roadmap
-
+```md
 Build server/client and display page
 tv browser to displayed page
 style page
 load Images, slides
     Working prototype
-
+```
+## Notes
+```md
+Needs:
+Update Slide
+Update SlideShow
+Update Endpoints
+Display Endpoints
+```
 ## Preview

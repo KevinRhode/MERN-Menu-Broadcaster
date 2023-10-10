@@ -13,7 +13,7 @@ function EndpointList(props) {
       setSelectedImages(prevSelected => [...prevSelected, id]);
     }
   }
-  console.log(selectedImages);
+  // console.log(selectedImages);
   return (
     <div>
     <div className="endpoint-list">

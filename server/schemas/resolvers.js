@@ -68,8 +68,10 @@ const resolvers = {
     },
     addEndpoint: async (parent, args, context)=> {
       if (context.user) {
-        const endpoint = await Endpoint.create(args);
-        return endpoint;
+        const endpoint = await Endpoint.create(args);  
+
+        const endpoint2 = await Endpoint.findOne({deviceId:args.deviceId}).populate({path:'slideshows',populate:{path:'slides'}});
+        return endpoint2;
       }
       throw AuthenticationError;
     },

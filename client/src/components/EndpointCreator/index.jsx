@@ -26,8 +26,10 @@ function EndpointCreator(props) {
   };
   const handleSubmit = async () => {
     try {
-      const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });      
-      console.log("Endpoint created:", result);
+      const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });  
+      console.log(result.data.addEndpoint);
+      // props.addEndpoint(result.data.addEndpoint);    
+      console.log("Endpoint created:", result.data.addEndpoint);
     } catch (err) {
       console.error("Failed to create endpoint:", err);
     }

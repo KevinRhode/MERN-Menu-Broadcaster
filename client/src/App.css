@@ -66,7 +66,7 @@
 
 .slideshowSlider {
   white-space: nowrap;
-  transition: ease 1500ms;
+  transition: ease 2000ms;
 }
 
 .slide {
@@ -76,12 +76,12 @@
   width: 100%;
   /* border-radius: 40px; */
 }
-.slide img {
+/* .slide img { */
   /* height: 100%; */
   /* width: 100%; */
   /* object-fit: cover; */
-  border-radius: 20px;
-}
+  /* border-radius: 20px; */
+/* } */
 
 /* slide thumbnail */
 .slide-thumbnail {
@@ -93,4 +93,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.endpoint-list {
+  display: flex;
+  flex-wrap: wrap;
 }

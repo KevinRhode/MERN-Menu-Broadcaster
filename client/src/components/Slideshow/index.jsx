@@ -8,7 +8,7 @@ import '../../App.css';
 // import {ImageBackground} from 'react-native';
 const images = [image2,image, image3, image4]
 const colors = ["#0088FE", "#00C49F", "#FFBB28"];
-const delay = 5000;
+const delay = 10000;
 
 function Slideshow(props) {
   const { id } = useParams();
@@ -21,8 +21,8 @@ function Slideshow(props) {
       show.push(element2)
     })
   });
-  console.log(show);
-  console.log(props.images);
+  // console.log(show);
+  // console.log(props.images);
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
 

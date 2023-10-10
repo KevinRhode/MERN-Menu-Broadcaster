@@ -3,6 +3,8 @@ import { useMutation } from '@apollo/client';
 import { Link, useNavigate } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+import './authenticate.css';
+
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -38,23 +40,25 @@ function Login(props) {
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="inputs">
           <label htmlFor="email">Email address:</label>
           <input
-            placeholder="youremail@test.com"
+            placeholder="youremail@provider.com"
             name="email"
             type="email"
             id="email"
+            autoComplete="on"
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="inputs">
           <label htmlFor="pwd">Password:</label>
           <input
             placeholder="******"
             name="password"
             type="password"
             id="pwd"
+            autoComplete="on"
             onChange={handleChange}
           />
         </div>

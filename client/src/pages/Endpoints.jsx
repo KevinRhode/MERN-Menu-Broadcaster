@@ -9,7 +9,7 @@ import Slideshow from '../components/Slideshow'
 function Endpoint(props) {
 //   const [formState, setFormState] = useState({ email: '', password: '' });
 const {id} = useParams();
-const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId:id},pollInterval: 30000});
+const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId:id},pollInterval: 60000});
   
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
