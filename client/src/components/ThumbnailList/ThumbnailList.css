@@ -26,8 +26,20 @@
     padding: 3px 8px;
     border-radius: 15px;
   }
+  .editImg {
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    font-size: 1.18rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 3px 8px;
+    border-radius: 15px;
+  }
   button {
     min-width: 8rem;
     min-height: 2rem;
+  }
+  .hidden {
+    display: none;
   }
   
