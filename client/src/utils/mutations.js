@@ -42,6 +42,26 @@ export const ADD_SLIDE = gql`
   }
 `;
 
+export const UPDATE_SLIDE = gql`
+  mutation UpdateSlide(
+    $slideId: ID,
+    $filename: String!, 
+    $extname: String!
+    ) {
+
+    updateSlide(
+      id: $slideId,
+      filename: $filename, 
+      extname: $extname)
+    {        
+      _id
+      filename
+      extname
+    }
+  }
+`;
+
+
 export const ADD_SLIDESHOW = gql`
 mutation addSlideshow($slides: [ID]!, $comments: String,$slideshowName: String!) {
   addSlideshow(slides: $slides, comments: $comments, slideshowName: $slideshowName) {

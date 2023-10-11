@@ -59,7 +59,14 @@ const resolvers = {
         const slide = await Slide.create(args);
         return slide;
       }
+    }, 
+    updateSlide: async (parent, {_id:id, filename, extname}, context) => {
+      if (context.user) {
+        const updatedSlide = await Slide.findByIdAndUpdate({_id:id},{id,filename,extname},{new:true});
+        return updatedSlide;
+      }
     },
+    
     addSlideshow: async (parent, args, context)=>{
       if (context.user) {
         const slideshow = await Slideshow.create(args);
