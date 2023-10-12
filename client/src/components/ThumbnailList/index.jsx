@@ -17,12 +17,15 @@ function ThumbnailList(props) {
       setSelectedImages(prevSelected => [...prevSelected, id]);
     }
   }
+  const onSubmit = async (e) => {
+      //console.log('on submit hit')
+  }
   const handleEdit = (id,e) => {
     e.stopPropagation();
     // fileInputRef.current.click().stopPropagation();
     if (fileInputRef.current) {
-      console.log('edit');
-      console.log(id);
+      //console.log('edit');
+     // console.log(id);
       fileInputRef.current.click();      
     }
     
@@ -43,8 +46,14 @@ function ThumbnailList(props) {
         >
           {selectedImages.includes(slide._id) && <div className="checkmark"><FontAwesomeIcon icon={faCheck} /></div>}
           {selectedImages.length === 1  && selectedImages.includes(slide._id) ? (<div onClick={(e)=>handleEdit(slide._id,e)} name='id' className='editImg'>            
-            <input id={slide._id} ref={fileInputRef} onChange={(e)=>{props.onFileChange(e)}} className='hidden' type='file'/>
-             <FontAwesomeIcon icon={faWrench} />
+            <form onSubmit={onSubmit}>
+              <div> 
+                <input id={slide._id} ref={fileInputRef} onChange={props.onFileChange} className='hidden' type='file'/>
+                </div>
+            <div> 
+              <FontAwesomeIcon icon={faWrench} />
+              </div>
+              </form>
 </div>) : (<></>)}
         </div>
       ))}

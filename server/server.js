@@ -2,6 +2,8 @@ const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
+const fs = require("fs");
+
 const { authMiddleware } = require("./utils/auth");
 const { v4: uuidv4 } = require('uuid');
 
@@ -74,6 +76,32 @@ const startApolloServer = async () => {
     res.status(201).json({
       message: "File uploaded successfully!",
       file: req.file.path,
+    });
+  });
+  app.delete("/uploads/:id", (req, res, next) =>{
+// Extract the file ID or name from the request parameters
+const filePath = path.join(__dirname, 'uploads', req.params.id);
+
+    // Check if the file exists
+    fs.exists(filePath, (exists) => {
+        if (!exists) {
+            return res.status(404).json({
+                error: "File not found.",
+            });
+        }
+
+        // Delete the file
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                return res.status(500).json({
+                    error: "Failed to delete the file.",
+                });
+            }
+
+            res.status(200).json({
+                message: "File deleted successfully!",
+            });
+        });
     });
   });
 

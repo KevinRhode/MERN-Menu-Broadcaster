@@ -25,10 +25,13 @@ const Dashboard = (props) => {
   const [slides, setSlides] = useState([...props.slides]);
   const [slideshows, setSlideshows] = useState([...props.slideshows]);
   const [endpoints, setEndpoints] = useState([...props.endpoints]);
-  const [updateSLide, { error:errorUpdate }] = useMutation(UPDATE_SLIDE);
-  const [file, setFile] = useState(null);
-
-  const updateFile = async (fileData) =>{
+  const [updateSlide, { error:errorUpdate }] = useMutation(UPDATE_SLIDE);
+  // const [file, setFile] = useState(null);
+  const deleteFile = async (id)=>{
+    const response = await axios.delete(`/uploads/${id}`);
+    console.log(response);
+  }
+  const updateFile = async (fileData,slideId) =>{
     const response = await axios.post('/uploads', fileData, {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -40,29 +43,59 @@ const Dashboard = (props) => {
     // console.log(file);
     // console.log(filename);
     // console.log(extname);
-    const gqlResponse = await updateSlide({variables:{filename,extname}});
-    console.log()
+    const gqlResponse = await updateSlide({variables:{slideId,filename,extname}});
+    //await deleteFile(slideId);
+    const updatedSlide = gqlResponse.data.updateSlide;
+    setSlides(prevSlides => {
+      return prevSlides.map(slide => {
+          if (slide._id === slideId) {  // Assuming each slide has a unique _id property
+              return updatedSlide;
+          }
+          return slide;
+      });
+  });
+    
+
+
+   
+
     // props.addSlide(gqlResponse.data.addSlide);
   }
 
+  // const response = await axios.post('/uploads', formData, {
+  //   headers: {
+  //     'Content-Type': 'multipart/form-data'
+  //   }
+  // });
+  // // console.log(response);
+  // const {0:filename,1:extname} = response.data.file.split('\\')[2].split('.');
+  // // console.log(response.data.file.split('\\')[2].split('.'));
+  // // console.log(file);
+  // // console.log(filename);
+  // // console.log(extname);
+  // const gqlResponse = await addSlide({variables:{filename,extname}});
+  // props.addSlide(gqlResponse.data.addSlide);
+
   const onFileChange = (e) => {
     
-    setFile(e.target.files[0]);
-    console.log(e.target);
-    console.log(e.target.files[0]);
-    console.log('on file change');
-    if (e.target.id !== null) {
-      
+    // setFile(e.target.files[0]);
+    // console.log(e.target);
+    // console.log(e.target.files[0]);
+    // console.log(e.target);
+    // console.log('on file change');
+    if (e.target.id !== null && e.target.files[0] !== null) {
+      console.log('on if  passed');
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', e.target.files[0]);
     
     try {
-     
+     updateFile(formData,e.target.id);
 
-      setMessage(response.data.message);
+      //setMessage(response.data.message);
     } catch (error) {
-      setMessage(error.response.data.error);
+      //setMessage(error.response.data.error);
     }
+
     }
   };
   const addSlide = (slide) => {
@@ -87,7 +120,7 @@ const Dashboard = (props) => {
      {slides && (<CreateSlideShow slides={slides} addSlideshow={addSlideshow} onFileChange={onFileChange} />)}
      {slideshows && (<EndpointCreator slideshows={slideshows} addEndpoint={addEndpoint} />)}
      {endpoints && (<EndpointPreview endpoints={endpoints}/>)}
-     {console.log(endpoints)}
+     {/* {console.log(endpoints)} */}
 
       </div>
        

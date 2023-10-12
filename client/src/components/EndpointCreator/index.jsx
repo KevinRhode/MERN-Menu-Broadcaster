@@ -27,7 +27,7 @@ function EndpointCreator(props) {
   const handleSubmit = async () => {
     try {
       const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });  
-      console.log(result.data.addEndpoint);
+      //console.log(result.data.addEndpoint);
       // props.addEndpoint(result.data.addEndpoint);    
       console.log("Endpoint created:", result.data.addEndpoint);
     } catch (err) {
@@ -54,6 +54,7 @@ function EndpointCreator(props) {
             }}
           />
           {slideshow.slideshowName}
+          
         </div>
       ))}
       <label htmlFor="deviceID">Device Endpoint: </label>

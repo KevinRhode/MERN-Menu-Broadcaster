@@ -50,7 +50,7 @@ export const UPDATE_SLIDE = gql`
     ) {
 
     updateSlide(
-      id: $slideId,
+      _id: $slideId,
       filename: $filename, 
       extname: $extname)
     {        
