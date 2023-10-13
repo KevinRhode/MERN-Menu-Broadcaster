@@ -15,7 +15,7 @@ import SlideShowDemo from './components/SlideShowDemo';
 import Fileupload from './components/FileUploadComponent/index.jsx';
 import Endpoint from './pages/Endpoints.jsx'
 import EndpointCreator from './components/EndpointCreator/index.jsx'
-// import UpdateSlideShow from './pages/SlideshowEdit.jsx';
+import UpdateSlideShow from './pages/SlideshowEdit.jsx';
 
 
 const router = createBrowserRouter([
@@ -57,6 +57,11 @@ const router = createBrowserRouter([
       {
         path:'/create',
         element:<CreateSlideShow/>,
+        errorElement: <NoMatch />
+      },
+      {
+        path:'/update/:id',
+        element:<UpdateSlideShow/>,
         errorElement: <NoMatch />
       },
       {

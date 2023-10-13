@@ -67,7 +67,7 @@ function ThumbnailList(props) {
             id="slideshowName"
             onChange={props.handleChange}
           />
-    <button onClick={() => props.handleCreate(selectedImages)}>Create Slideshow</button>
+    <button onClick={() => props.handleCreate(selectedImages)}>{props.btn} Slideshow</button>
     </div>
   );
 }

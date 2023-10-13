@@ -2,9 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ALL_SLIDESHOWS } from "../../utils/queries";
 import { ADD_ENDPOINT } from "../../utils/mutations";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWrench,faCheck } from '@fortawesome/free-solid-svg-icons';
+
+import { useNavigate } from "react-router-dom";
+
 
 function EndpointCreator(props) {
-  
+  const navigate = useNavigate();
   const [addEndpoint] = useMutation(ADD_ENDPOINT);
 
   const [selectedSlideshows, setSelectedSlideshows] = useState([]);
@@ -54,6 +59,7 @@ function EndpointCreator(props) {
             }}
           />
           {slideshow.slideshowName}
+          <FontAwesomeIcon style={{cursor:'pointer'}} icon={faWrench} id={slideshow._id} onClick={(e)=>navigate(`/update/${slideshow._id}`)}/>
           
         </div>
       ))}
