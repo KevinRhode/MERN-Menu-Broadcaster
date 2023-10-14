@@ -14,6 +14,8 @@ const UpdateSlideShow = (props) => {
   const {id} = useParams();
   const { loading: slideLoading, error: slideError, data: slideData } = useQuery(GET_SLIDESHOW,{variables:{getSlideshowId:id}});
 
+ 
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -45,7 +47,7 @@ const UpdateSlideShow = (props) => {
   return (
     <div className="container"> 
       <h1>Update Slide Show</h1>
-      <ThumbnailList images={data.getAllslides} selectedImages={slideData} btn={'Update'} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
+      <ThumbnailList images={data.getAllslides} selectedImages={slideData.getSlideshow} btn={'Update'} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
 
      </div>
   );

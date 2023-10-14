@@ -27,7 +27,7 @@ const resolvers = {
         return slideshows;
       }
     },
-    getSlideshow: async (parents,{id}) =>{
+    getSlideshow: async (parents,{id}, context) =>{
       if (context.user) {
       const slideshow = await Slideshow.findById(id).populate('slides');
       return slideshow;
@@ -73,6 +73,13 @@ const resolvers = {
         return slideshow;
       }
     },
+    updateSlideshow: async (parent, {_id, slides, comments, slideshowName}, context) => {
+      if (context.user) {
+        const updatedSlideshow = await Slideshow.findByIdAndUpdate({_id:id},{slides,comments,slideshowName},{new:true});
+        return updatedSlideshow;
+      }
+    },
+    
     addEndpoint: async (parent, args, context)=> {
       if (context.user) {
         const endpoint = await Endpoint.create(args);  

@@ -61,6 +61,19 @@ export const UPDATE_SLIDE = gql`
   }
 `;
 
+export const UPDATE_SLIDESHOW = gql`
+mutation updateSlideshow($slides: [ID]!, $comments: String,$slideshowName: String!) {
+  updateSlideshow(slides: $slides, comments: $comments, slideshowName: $slideshowName) {
+    comments
+    slideshowName
+    _id
+    slides {
+      _id
+    }
+  }
+}
+`;
+
 
 export const ADD_SLIDESHOW = gql`
 mutation addSlideshow($slides: [ID]!, $comments: String,$slideshowName: String!) {

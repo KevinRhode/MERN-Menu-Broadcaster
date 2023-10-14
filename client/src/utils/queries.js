@@ -57,7 +57,7 @@ export const GET_ALL_ENDPOINTS = gql`
 
 export const GET_SLIDESHOW = gql`
 
- {
+query getSlideshow($getSlideshowId: String!){
   getSlideshow(id: $getSlideshowId) {
     comments
     slideshowName

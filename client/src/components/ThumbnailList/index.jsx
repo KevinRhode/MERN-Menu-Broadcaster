@@ -3,10 +3,16 @@ import './ThumbnailList.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWrench,faCheck } from '@fortawesome/free-solid-svg-icons';
 
+import {UPDATE_SLIDESHOW} from '../../utils/mutations'
+
+
 
 
 function ThumbnailList(props) {
-  const [selectedImages, setSelectedImages] = useState([]);
+  const loadedSelected = props.selectedImages;
+  const newSelectedImages= loadedSelected ? loadedSelected.slides.map(slide => slide._id) : [];
+  
+  const [selectedImages, setSelectedImages] = useState(newSelectedImages);
   const fileInputRef = useRef(null);
   const handleImageClick = (id) => {    
     // const src = props.images.find(slide => slide._id === id).filename;
@@ -17,6 +23,8 @@ function ThumbnailList(props) {
       setSelectedImages(prevSelected => [...prevSelected, id]);
     }
   }
+
+
   const onSubmit = async (e) => {
       //console.log('on submit hit')
   }
@@ -66,8 +74,9 @@ function ThumbnailList(props) {
             type="String"
             id="slideshowName"
             onChange={props.handleChange}
+            value={loadedSelected ? loadedSelected.slideshowName : ''}
           />
-    <button onClick={() => props.handleCreate(selectedImages)}>{props.btn} Slideshow</button>
+    <button onClick={() => props.handleEdit(selectedImages)}>{props.btn} Slideshow</button>
     </div>
   );
 }
