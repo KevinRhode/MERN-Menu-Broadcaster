@@ -11,7 +11,7 @@ import {UPDATE_SLIDESHOW} from '../../utils/mutations'
 function ThumbnailList(props) {
   const loadedSelected = props.selectedImages;
   const newSelectedImages= loadedSelected ? loadedSelected.slides.map(slide => slide._id) : [];
-  
+  const [formsState, setFormsState] = useState({slideshowName:loadedSelected ? loadedSelected.slideshowName : ''});
   const [selectedImages, setSelectedImages] = useState(newSelectedImages);
   const fileInputRef = useRef(null);
   const handleImageClick = (id) => {    
@@ -23,8 +23,26 @@ function ThumbnailList(props) {
       setSelectedImages(prevSelected => [...prevSelected, id]);
     }
   }
-
-
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormsState({
+      ...formsState,
+      [name]: value,
+    });
+  };
+  // const removeTask = async (id) => {
+  //   const updatedTasks = [...listState].filter((task) => task._id !== id);
+  //   try {
+  //     const deletedTask = await deleteTask({
+  //       variables: { deleteTaskId:id },
+  //       context: authContext,
+  //     });
+  //     console.log(deletedTask);
+  //   } catch (error) {
+      
+  //   }
+  //   setListState(updatedTasks);
+  // };
   const onSubmit = async (e) => {
       //console.log('on submit hit')
   }
@@ -68,15 +86,25 @@ function ThumbnailList(props) {
       
     </div>
     <label htmlFor="slideshowName">Slideshow Name: </label>
-          <input
+    {loadedSelected ? (<input
             placeholder=""
             name="slideshowName"
             type="String"
             id="slideshowName"
-            onChange={props.handleChange}
-            value={loadedSelected ? loadedSelected.slideshowName : ''}
-          />
-    <button onClick={() => props.handleEdit(selectedImages)}>{props.btn} Slideshow</button>
+            onChange={handleChange}    
+            value={formsState.slideshowName}        
+          />) : (<input
+            placeholder=""
+            name="slideshowName"
+            type="String"
+            id="slideshowName"
+            onChange={props.handleChange}            
+          />)}
+          
+          
+    {loadedSelected ? (<button onClick={() => props.handleEdit(loadedSelected ? loadedSelected._id: "",selectedImages,formsState.slideshowName)}>{props.btn} Slideshow</button>) :
+    (<button onClick={() => props.handleCreate(selectedImages)}>{props.btn} Slideshow</button>)}
+    
     </div>
   );
 }

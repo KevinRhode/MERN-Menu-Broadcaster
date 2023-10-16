@@ -22,6 +22,7 @@ function EndpointPreview(props) {
           <div className='thumbnail'>
             <Slideshow images={endpoint.slideshows}/>
           </div>
+          <button onClick={() => props.onEdit(endpoint)}>Edit</button>
           {/* {selectedImages.includes(slide._id) && <div className="checkmark">✔</div>} */}
         </div>
       ))}

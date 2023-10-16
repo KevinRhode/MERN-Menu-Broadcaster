@@ -4,6 +4,7 @@ import Auth from "../utils/auth";
 import { useParams } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ALL_SLIDES, GET_SLIDESHOW } from '../utils/queries';
+import { UPDATE_SLIDESHOW } from "../utils/mutations";
 import React, {useState, useEffect} from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -13,8 +14,14 @@ const UpdateSlideShow = (props) => {
   const [formState, setFormState] = useState({slideshowName:''});
   const {id} = useParams();
   const { loading: slideLoading, error: slideError, data: slideData } = useQuery(GET_SLIDESHOW,{variables:{getSlideshowId:id}});
+  const [UpdateSlideShow, { error }] = useMutation(UPDATE_SLIDESHOW);
 
- 
+  const handleEdit = async (id, slideIds,ssName) => {
+    if(id){
+      const response = await UpdateSlideShow({variables:{slideshowId:id,slides:slideIds,comments:'',slideshowName:ssName}});
+      console.log(response);
+    }
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -47,7 +54,7 @@ const UpdateSlideShow = (props) => {
   return (
     <div className="container"> 
       <h1>Update Slide Show</h1>
-      <ThumbnailList images={data.getAllslides} selectedImages={slideData.getSlideshow} btn={'Update'} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
+      <ThumbnailList images={data.getAllslides} selectedImages={slideData.getSlideshow} handleEdit={handleEdit} btn={'Update'} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
 
      </div>
   );

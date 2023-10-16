@@ -62,8 +62,8 @@ export const UPDATE_SLIDE = gql`
 `;
 
 export const UPDATE_SLIDESHOW = gql`
-mutation updateSlideshow($slides: [ID]!, $comments: String,$slideshowName: String!) {
-  updateSlideshow(slides: $slides, comments: $comments, slideshowName: $slideshowName) {
+mutation updateSlideshow($slideshowId: ID, $slides: [ID]!, $comments: String,$slideshowName: String!) {
+  updateSlideshow(_id: $slideshowId, slides: $slides, comments: $comments, slideshowName: $slideshowName) {
     comments
     slideshowName
     _id
@@ -89,8 +89,20 @@ mutation addSlideshow($slides: [ID]!, $comments: String,$slideshowName: String!)
 `
 
 export const ADD_ENDPOINT = gql`
-mutation Mutation($slideshows: [ID]!, $deviceId: String!) {
+mutation addEndpoint($slideshows: [ID]!, $deviceId: String!) {
   addEndpoint(slideshows: $slideshows, deviceId: $deviceId) {
+    deviceId
+    _id
+    slideshows {
+      _id
+    }
+  }
+}
+`;
+
+export const UPDATE_ENDPOINT = gql`
+mutation updateEndpoint($endpointId: ID, $slideshows: [ID]!, $deviceId: String!) {
+  updateEndpoint(_id:$endpointId, slideshows: $slideshows, deviceId: $deviceId) {
     deviceId
     _id
     slideshows {

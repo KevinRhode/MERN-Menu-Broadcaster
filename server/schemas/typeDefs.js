@@ -42,13 +42,13 @@ const typeDefs = `
 
   type Mutation {
     addEndpoint(slideshows: [ID]!, deviceId: String!): Endpoint
-    updateEndpoint(_id: ID!, slideshows: [ID]): Endpoint
+    updateEndpoint(_id: ID, deviceId: String!, slideshows: [ID]): Endpoint
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth  
     addSlide(filename: String!, extname: String!): Slide  
     addSlideshow(slides: [ID]!, comments: String,slideshowName: String!): Slideshow
     updateUser(firstName: String, lastName: String, email: String, password: String): User    
     updateSlide(_id: ID,filename: String, extname: String): Slide
-    updateSlideshow(slides: [ID], comments: String,slideshowName: String): Slideshow
+    updateSlideshow(_id: ID,slides: [ID], comments: String,slideshowName: String): Slideshow
     login(email: String!, password: String!): Auth
   }
 `;

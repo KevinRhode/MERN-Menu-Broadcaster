@@ -75,7 +75,7 @@ const resolvers = {
     },
     updateSlideshow: async (parent, {_id, slides, comments, slideshowName}, context) => {
       if (context.user) {
-        const updatedSlideshow = await Slideshow.findByIdAndUpdate({_id:id},{slides,comments,slideshowName},{new:true});
+        const updatedSlideshow = await Slideshow.findByIdAndUpdate({_id:_id},{slides,comments,slideshowName},{new:true});
         return updatedSlideshow;
       }
     },
@@ -88,6 +88,12 @@ const resolvers = {
         return endpoint2;
       }
       throw AuthenticationError;
+    },
+    updateEndpoint: async (parent, {_id, deviceId, slideshows}, context) => {
+      if (context.user) {
+        const updatedEndpoint = await Endpoint.findByIdAndUpdate({_id},{slideshows,deviceId},{new:true});
+        return updatedEndpoint;
+      }
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {

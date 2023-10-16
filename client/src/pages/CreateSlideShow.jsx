@@ -12,7 +12,7 @@ const CreateSlideShow = (props) => {
   const [listState, setListState] = useState([...props.slides]);
   const [formState, setFormState] = useState({slideshowName:''});
 
-  const handleChange = (event) => {
+  const handleChange = (event) => {    
     const { name, value } = event.target;
     setFormState({
       ...formState,
@@ -41,7 +41,7 @@ const CreateSlideShow = (props) => {
   return (
     <div className="container"> 
       <h1>Create Slide Show</h1>
-      <ThumbnailList images={listState} btn={'Create'} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
+      <ThumbnailList images={listState} btn={'Create'} formState={formState} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
 
      </div>
   );
