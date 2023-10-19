@@ -1,10 +1,12 @@
 // components/EditEndpointModal.js
 import { useState } from "react";
+import _ from "lodash";
 
 const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
-    
   const [updatedEndpoint, setUpdatedEndpoint] = useState(endpoint);
-  const [selectedSlideshows, setSelectedSlideshows] = useState([...endpoint.slideshows] || []);
+  const [selectedSlideshows, setSelectedSlideshows] = useState(
+    [...endpoint.slideshows] || []
+  );
   const [slideshowsCurrent, setSlideshowsCurrent] = useState(slideshows || []);
   console.log(updatedEndpoint);
   const handleChange = (e) => {
@@ -14,27 +16,39 @@ const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
       [name]: value,
     });
   };
-  
 
   const handleCheckboxChange = (slideshow) => {
     let updatedSlideshows;
-   
+
     console.log();
-    if (selectedSlideshows.map(slideshow => slideshow._id).includes(slideshow._id)) {
-        updatedSlideshows = selectedSlideshows.filter(existingSlideshow => existingSlideshow._id !== slideshow._id);
+    if (
+      selectedSlideshows
+        .map((slideshow) => slideshow._id)
+        .includes(slideshow._id)
+    ) {
+      updatedSlideshows = selectedSlideshows.filter(
+        (existingSlideshow) => existingSlideshow._id !== slideshow._id
+      );
     } else {
-        updatedSlideshows = [...selectedSlideshows, slideshow];
+      updatedSlideshows = [...selectedSlideshows, slideshow];
     }
 
     setSelectedSlideshows(updatedSlideshows);
-    setUpdatedEndpoint({ ...updatedEndpoint, "slideshows": updatedSlideshows });
-};
-  
+    setUpdatedEndpoint({ ...updatedEndpoint, slideshows: updatedSlideshows });
+  };
+
   const handleSave = () => {
     // setUpdatedEndpoint({ ...updatedEndpoint, "slideshows": selectedIds });
     // const updatedEndpoint = { ...endpoint, slideshows: selectedIds };
-    onUpdate(updatedEndpoint);  // Call parent's onUpdate function to inform about the change.
-    onClose();  // Close the modal
+
+    if (_.isEqual(updatedEndpoint, endpoint)) {
+      console.log("The state hasn't changed.");
+    } else {
+      console.log("The state has changed.");
+      onUpdate(updatedEndpoint); // Call parent's onUpdate function to inform about the change.
+    }
+
+    onClose(); // Close the modal
   };
 
   return (
@@ -42,20 +56,21 @@ const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
       <div className="modal-content">
         <h2>Edit Endpoint</h2>
         {slideshowsCurrent.map((slideshow) => (
-            <div key={slideshow._id}>
-              <input
-                type="checkbox"
-                checked={selectedSlideshows.map(slideshow => slideshow._id).includes(slideshow._id)}
-                onChange={() => handleCheckboxChange(slideshow)}
-              />
-              <label>{slideshow.slideshowName}</label>
-            
-            </div>
-          ))}
+          <div key={slideshow._id}>
+            <input
+              type="checkbox"
+              checked={selectedSlideshows
+                .map((slideshow) => slideshow._id)
+                .includes(slideshow._id)}
+              onChange={() => handleCheckboxChange(slideshow)}
+            />
+            <label>{slideshow.slideshowName}</label>
+          </div>
+        ))}
         {/* Here you can add fields to edit endpoint attributes */}
 
-        <input 
-          type="number" 
+        <input
+          type="number"
           name="deviceId"
           value={updatedEndpoint.deviceId}
           onChange={handleChange}
@@ -65,6 +80,6 @@ const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
       </div>
     </div>
   );
-}
+};
 
 export default EditEndpointModal;
