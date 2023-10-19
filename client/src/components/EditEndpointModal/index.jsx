@@ -4,7 +4,7 @@ import { useState } from "react";
 const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
     
   const [updatedEndpoint, setUpdatedEndpoint] = useState(endpoint);
-  const [selectedSlideshows, setSelectedSlideshows] = useState(endpoint.slideshows || []);
+  const [selectedSlideshows, setSelectedSlideshows] = useState([...endpoint.slideshows] || []);
   const [slideshowsCurrent, setSlideshowsCurrent] = useState(slideshows || []);
   console.log(updatedEndpoint);
   const handleChange = (e) => {
@@ -18,9 +18,10 @@ const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
 
   const handleCheckboxChange = (slideshow) => {
     let updatedSlideshows;
-
-    if (selectedSlideshows.includes(slideshow)) {
-        updatedSlideshows = selectedSlideshows.filter(existingSlideshow => existingSlideshow !== slideshow);
+   
+    console.log();
+    if (selectedSlideshows.map(slideshow => slideshow._id).includes(slideshow._id)) {
+        updatedSlideshows = selectedSlideshows.filter(existingSlideshow => existingSlideshow._id !== slideshow._id);
     } else {
         updatedSlideshows = [...selectedSlideshows, slideshow];
     }

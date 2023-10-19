@@ -43,8 +43,8 @@ function EndpointCreator(props) {
   // if (slideshowLoading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>Create Endpoint</h2>
+    <div style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
+      
       {props.slideshows.map((slideshow) => (
         <div key={slideshow._id}>
           <input
@@ -63,6 +63,7 @@ function EndpointCreator(props) {
           
         </div>
       ))}
+      <h2>Create Endpoint</h2>
       <label htmlFor="deviceID">Device Endpoint: </label>
           <input
             placeholder=""
