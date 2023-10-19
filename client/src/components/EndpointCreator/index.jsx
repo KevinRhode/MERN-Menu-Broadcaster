@@ -58,8 +58,11 @@ function EndpointCreator(props) {
               }
             }}
           />
+          
+          
           {slideshow.slideshowName}
-          <FontAwesomeIcon style={{cursor:'pointer'}} icon={faWrench} id={slideshow._id} onClick={(e)=>navigate(`/update/${slideshow._id}`)}/>
+          
+          <FontAwesomeIcon style={{padding:'0rem 0.5rem', cursor:'pointer'}} icon={faWrench} id={slideshow._id} onClick={(e)=>navigate(`/update/${slideshow._id}`)}/>
           
         </div>
       ))}
