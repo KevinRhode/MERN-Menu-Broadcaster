@@ -40,7 +40,7 @@ const CreateSlideShow = (props) => {
     if (loadingError) return <p>Error: {loadingError.message}</p>;
   return (
     <div className="container"> 
-      <h1>Create Slide Show</h1>
+      
       <ThumbnailList images={listState} btn={'Create'} formState={formState} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
 
      </div>

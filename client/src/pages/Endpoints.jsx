@@ -9,10 +9,11 @@ import Slideshow from '../components/Slideshow'
 function Endpoint(props) {
 //   const [formState, setFormState] = useState({ email: '', password: '' });
 const {id} = useParams();
-const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId:id},pollInterval: 60000});
+const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId:id},pollInterval: 60000,fetchPolicy:'cache-and-network', errorPolicy:'all'});
   
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (error && !data.getEndpoint) return <p>Error: {error.message}</p>;
+  // if (error) return <p>Error: {error.message}</p>;
 return (
   <div style={{display:'flex'}} className="slideshow-container">
     {data.getEndpoint.length === 0 ? (

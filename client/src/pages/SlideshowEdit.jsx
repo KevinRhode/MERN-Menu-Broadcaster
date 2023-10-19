@@ -55,7 +55,7 @@ const UpdateSlideShow = (props) => {
     <div className="container"> 
       <h1>Update Slide Show</h1>
       <ThumbnailList images={data.getAllslides} selectedImages={slideData.getSlideshow} handleEdit={handleEdit} btn={'Update'} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
-
+      <button className="btn" onClick={()=>navigate(-1)}>Back</button>
      </div>
   );
 };

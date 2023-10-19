@@ -61,7 +61,7 @@ function ThumbnailList(props) {
   }
   // console.log(selectedImages);
   return (
-    <div>
+    <div style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
     <div className="thumbnail-list">
       {props.images.map((slide) => (
         <div
@@ -85,6 +85,8 @@ function ThumbnailList(props) {
       ))}
       
     </div>
+    <h2>{props.btn} Slideshow</h2>
+    
     <label htmlFor="slideshowName">Slideshow Name: </label>
     {loadedSelected ? (<input
             placeholder=""

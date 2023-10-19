@@ -7,7 +7,7 @@ import Slideshow from '../Slideshow';
 function EndpointPreview(props) {
 
   return (
-    <div>
+    <div >
     <div className="endpoint-list">
       {/* {console.log(props)} */}
       {props.endpoints.map((endpoint) => (

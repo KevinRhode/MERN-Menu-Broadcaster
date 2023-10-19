@@ -40,7 +40,7 @@ const Dashboard = (props) => {
     // if (reponse.message) {
       
     // }
-    setEndpoints((prev) => prev.map(ep => ep.id === updatedEndpoint.id ? updatedEndpoint : ep));
+    setEndpoints((prev) => prev.map(ep => ep._id === updatedEndpoint._id ? updatedEndpoint : ep));
     setEditingEndpoint(null);
   };
   // const [file, setFile] = useState(null);
