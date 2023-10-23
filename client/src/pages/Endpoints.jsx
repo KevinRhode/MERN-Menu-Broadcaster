@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { Link, useParams } from 'react-router-dom';
 import { GET_ENDPOINT } from '../utils/queries';
@@ -7,6 +7,7 @@ import Slideshow from '../components/Slideshow'
 
 
 function Endpoint(props) {
+ 
 //   const [formState, setFormState] = useState({ email: '', password: '' });
 const {id} = useParams();
 const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId:id},pollInterval: 60000,fetchPolicy:'cache-and-network', errorPolicy:'all'});
@@ -14,6 +15,13 @@ const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId
   if (loading) return <p>Loading...</p>;
   if (error && !data.getEndpoint) return <p>Error: {error.message}</p>;
   // if (error) return <p>Error: {error.message}</p>;
+
+//  if (data.getEndpoint.slideshows.length === 1) {
+//   const rootElement = document.getElementById('root');
+//   rootElement.style.flexDirection='column';
+//  }
+ 
+
 return (
   <div style={{display:'flex'}} className="slideshow-container">
     {data.getEndpoint.length === 0 ? (

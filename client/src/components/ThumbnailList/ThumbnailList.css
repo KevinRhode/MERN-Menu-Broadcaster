@@ -7,11 +7,15 @@
   .thumbnail {
     width: 170px;
     height: 100px;
+    
     margin: 5px;
     background-size: cover;
     background-position: center;
     position: relative;
     cursor: pointer;
+  }
+  .thumbnail img{
+    max-height: 100px;
   }
   
   .thumbnail.selected {

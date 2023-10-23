@@ -4,7 +4,7 @@ import './Endpoints.css';
 
 function EndpointList(props) {
   const [selectedImages, setSelectedImages] = useState([]);
-
+ 
   const handleImageClick = (id) => {
     // const src = props.images.find(slide => slide._id === id).filename;
     if (selectedImages.includes(id)) {

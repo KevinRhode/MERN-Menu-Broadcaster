@@ -104,3 +104,7 @@ LG TV -
 	 6 - Reg Prices, w/ Card Fee, buffet
 	 7 - Works Best Deal Package
 ```
+
+
+## Credits
+-[styling for slideshow list](https://stackoverflow.com/questions/37659558/move-last-element-to-next-line-in-a-flex-container)

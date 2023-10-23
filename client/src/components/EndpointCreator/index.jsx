@@ -16,6 +16,7 @@ function EndpointCreator(props) {
   
   const [formState, setFormState] = useState({ deviceID: '' });
 
+  
   // useEffect(() => {
   //   if (slideshowError) {
   //     console.error("Failed to fetch slideshows:", slideshowError);
@@ -43,10 +44,19 @@ function EndpointCreator(props) {
   // if (slideshowLoading) return <p>Loading...</p>;
 
   return (
-    <div style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
+    <div className="ecContainer" style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
       
       {props.slideshows.map((slideshow) => (
-        <div key={slideshow._id}>
+        <div className="slideshowCasrd" key={slideshow._id} onClick={()=>{
+          if (selectedSlideshows.includes(slideshow._id)) {
+            setSelectedSlideshows(selectedSlideshows.filter(id => id !== slideshow._id));
+            console.log(true);
+          } else {
+           
+            setSelectedSlideshows([...selectedSlideshows, slideshow._id]);
+            console.log(false);
+          }
+        }}>
           <input
             type="checkbox"
             value={slideshow._id}
@@ -60,12 +70,14 @@ function EndpointCreator(props) {
           />
           
           
-          {slideshow.slideshowName}
+          <p>{slideshow.slideshowName}</p>
           
           <FontAwesomeIcon style={{padding:'0rem 0.5rem', cursor:'pointer'}} icon={faWrench} id={slideshow._id} onClick={(e)=>navigate(`/update/${slideshow._id}`)}/>
           
         </div>
       ))}
+
+      <div className="endofCard">
       <h2>Create Endpoint</h2>
       <label htmlFor="deviceID">Device Endpoint: </label>
           <input
@@ -76,6 +88,8 @@ function EndpointCreator(props) {
             onChange={handleChange}
           />
       <button onClick={handleSubmit}>Create Endpoint</button>
+      </div>
+      
     </div>
   );
 }
