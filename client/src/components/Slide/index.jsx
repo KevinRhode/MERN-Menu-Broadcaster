@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 const SlideComponent = (props) => {
     // const { loading, error, data } = useQuery(GET_ALL_SLIDES);
     const [listState, setListState] = useState([...props.slides]);
+    const [imageRatios, setImageRatios] = useState({});
     // if (loading) return <p>Loading...</p>;
     // if (error) return <p>Error: {error.message}</p>;
     useEffect(() => {
@@ -17,7 +18,7 @@ const SlideComponent = (props) => {
       ) : (
         listState.map((slide) => (
           <div key={slide._id} className="slide-thumbnail">
-           <img style={{width:'100%'}} src={`/uploads/${slide.filename}.${slide.extname}`} alt={slide.filename} />
+           <img src={`/uploads/${slide.filename}.${slide.extname}`} alt={slide.filename} />
             <p>{slide.filename}</p>
           </div>
         ))

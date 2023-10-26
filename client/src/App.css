@@ -1,30 +1,56 @@
+:root {
+  --header-background-color: #629460;
+  --content-background-color: #C9F2C7;
+  --content-accent-color: #243119;
+  --border-style-accent: solid 0.15rem var(--content-accent-color);
+}
+
 #root {
   font-family: "Montserrat", sans-serif;
   display: flex;
   flex-grow: 1; /* will cause vertical images to grow when horz, formats fine so far*/
 }
-
 html{
-  height: 100%;
+  min-height: 100vh;
 }
 
 body {
   height: 100%;
+  min-height: 100vh;
   display: flex;
   margin: 0;
 }
+.navHeader{
+  background-color: var(--header-background-color);
+}
 .container{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.content {
+  background-color: var(--content-background-color);
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-@media screen and (min-width: 600px) {
+.footerDiv {
+  background-color: var(--header-background-color);
+  color: var(--content-background-color);
+  display: flex;
+  flex-grow: 1;  
+  align-items: center;
+  justify-content: center;
+}
+
+/* @media screen and (min-width: 600px) {
   .container {
     flex-direction: row;
   }
   
-}
-
+} */
 
 .logo {
   height: 6em;
@@ -131,18 +157,16 @@ body {
 
 .ecContainer {
   display: flex;
-  flex-wrap: wrap;
-  border: "black solid 0.15rem";
+  flex-wrap: wrap;  
+  border: var(--content-accent-color);
   border-radius: "0.5rem";
 }
-/* style={{
-  // display: 'flex',
-  // flexDirection: 'row',
-  // justifyContent: 'center',
-  // alignItems: 'center'      
-}} */
+.accentBorder {
+  border: var(--border-style-accent);
+  border-radius: 0.5rem;
+}
 .slideshowCasrd {
-  border: #888 solid 0.15rem;
+  border: solid 0.15rem var(--content-accent-color);
   border-radius: 0.5rem;
   margin: 0.15rem;
   display: flex;

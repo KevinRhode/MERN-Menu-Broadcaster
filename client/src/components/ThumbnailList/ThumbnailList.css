@@ -4,19 +4,28 @@
     justify-content: space-evenly;
   }
   
-  .thumbnail {
+  .thumbnail {    
+    margin: 5px;
     width: 170px;
     height: 100px;
-    
-    margin: 5px;
+    border-radius: 0.5rem;
     background-size: cover;
     background-position: center;
     position: relative;
     cursor: pointer;
   }
-  .thumbnail img{
-    max-height: 100px;
+
+  .thumbnail.landscape {
+    width: 170px;
+    height: 100px;
   }
+  .thumbnail.portrait {
+    width: 100px;
+    height: 170px;
+  }
+  /* .thumbnail img{
+    max-height: 100px;
+  } */
   
   .thumbnail.selected {
     outline: 3px solid blue; 

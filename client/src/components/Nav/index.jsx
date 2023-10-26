@@ -34,7 +34,7 @@ function Nav() {
   }
 
   return (
-    <header className="">
+    <header className="navHeader">
       <h1>        
         <Link to="/">
         Demo Slideshow

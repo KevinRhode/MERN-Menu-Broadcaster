@@ -3,6 +3,7 @@ import FileUploadComponent from "../components/FileUploadComponent";
 import EndpointPreview from "../components/EndpointPreview";
 import EditEndpointModal from "../components/EditEndpointModal";
 import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 
 import CreateSlideShow from "./CreateSlideShow";
 import { ADD_SLIDE, UPDATE_SLIDE, UPDATE_ENDPOINT } from "../utils/mutations";
@@ -143,6 +144,9 @@ const Dashboard = (props) => {
      <div>
      {endpoints && (<EndpointPreview endpoints={endpoints} onEdit={handleEditEndpoint}/>)}
      </div>  
+     <div className="footerDiv">
+      <Footer/>
+     </div>
            
       {editingEndpoint && (
         <EditEndpointModal 

@@ -9,11 +9,27 @@ import {UPDATE_SLIDESHOW} from '../../utils/mutations'
 
 
 function ThumbnailList(props) {
+
   const loadedSelected = props.selectedImages;
   const newSelectedImages= loadedSelected ? loadedSelected.slides.map(slide => slide._id) : [];
   const [formsState, setFormsState] = useState({slideshowName:loadedSelected ? loadedSelected.slideshowName : ''});
   const [selectedImages, setSelectedImages] = useState(newSelectedImages);
+  const [imageRatios, setImageRatios] = useState({});
   const fileInputRef = useRef(null);
+
+  const handleAspectCheck = (image) => {
+    const img = new Image();
+    img.onload = function() {
+      const aspectRatio = this.width / this.height;
+      setImageRatios(prevRatios => ({
+        ...prevRatios,
+        [image._id]: aspectRatio
+      }));
+    }
+    img.src = imageUrl;
+  }
+
+
   const handleImageClick = (id) => {    
     // const src = props.images.find(slide => slide._id === id).filename;
     
@@ -61,7 +77,7 @@ function ThumbnailList(props) {
   }
   // console.log(selectedImages);
   return (
-    <div style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
+    <div className='accentBorder'>
     <div className="thumbnail-list">
       {props.images.map((slide) => (
         <div

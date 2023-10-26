@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slideshow from '../Slideshow';
 
 
 
 
 function EndpointPreview(props) {
+  const [imageRatios, setImageRatios] = useState({});
+
+  useEffect(() => {
+    props.endpoints.forEach(endpoint => {
+      // Assume you are loading the first image from the slideshows for this example.
+      const imageUrl = `/uploads/${endpoint.slideshows[0].slides[0].filename}.${endpoint.slideshows[0].slides[0].extname}`;
+      const img = new Image();
+      img.onload = function() {
+        const aspectRatio = this.width / this.height;
+        setImageRatios(prevRatios => ({
+          ...prevRatios,
+          [endpoint._id]: aspectRatio
+        }));
+      }
+      img.src = imageUrl;
+    });
+  }, [props.endpoints]);
 
   return (
     <div >
@@ -19,7 +36,7 @@ function EndpointPreview(props) {
           // style={{ backgroundImage: `url(${'/uploads/'+slide.filename + '.' +slide.extname})` }}
         >
           {endpoint.deviceId}
-          <div className='thumbnail'>
+          <div className={`thumbnail ${imageRatios[endpoint._id] > 1 ? 'landscape' : 'portrait'}`}>
             <Slideshow images={endpoint.slideshows}/>
           </div>
           <button onClick={() => props.onEdit(endpoint)}>Edit</button>

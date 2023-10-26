@@ -7,6 +7,16 @@ import Slideshow from '../components/Slideshow'
 
 
 function Endpoint(props) {
+  useEffect(() => {
+    import('./endpoint.css');
+    
+    // Optionally: Clean up when component is unmounted
+    return () => {
+      // Do any cleanup (if necessary)
+      
+    }
+  }, []);
+
  
 //   const [formState, setFormState] = useState({ email: '', password: '' });
 const {id} = useParams();
