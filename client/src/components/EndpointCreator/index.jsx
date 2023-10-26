@@ -47,7 +47,7 @@ function EndpointCreator(props) {
     <div className="ecContainer" style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
       
       {props.slideshows.map((slideshow) => (
-        <div className="slideshowCasrd" key={slideshow._id} onClick={()=>{
+        <div className={`slideshowCasrd ${selectedSlideshows.includes(slideshow._id) ? 'selected' : ''}`} key={slideshow._id} onClick={()=>{
           if (selectedSlideshows.includes(slideshow._id)) {
             setSelectedSlideshows(selectedSlideshows.filter(id => id !== slideshow._id));
             console.log(true);

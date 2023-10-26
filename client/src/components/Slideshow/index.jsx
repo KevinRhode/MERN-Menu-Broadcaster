@@ -47,43 +47,89 @@ function Slideshow(props) {
     };
   }, [index]);
 
-  return (
-    <>
-    <div className="slideshow" style={{display:'flex',flexGrow:'1'}}>
-      <div
-        className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, flexGrow:'1' }}
-      >
+  if (show.length === 1) {
+    return (
+      <>
+      <div className="slideshow" style={{display:'flex',flexGrow:'1'}}>
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, flexGrow:'1' }}
+        >
+          
+          {show.map((background, index) => (
+            <div
+              className="slide"
+              key={index}           
+              // style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
+  
+            >
+             
+              <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}   style={{ width: "100%", height: "auto"}} />
+            </div>
+            
+          ))}
+          {show.map((background, index) => (
+            <div
+              className="slide"
+              key={index}           
+              // style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
+  
+            >
+             
+              <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}   style={{ width: "100%", height: "auto"}} />
+            </div>
+            
+          ))}
         
-        {show.map((background, index) => (
-          <div
-            className="slide"
-            key={index}           
-            // style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
-
-          >
-           {/* {console.log(background)} */}
-           {/* <p>Testing</p> */}
-            <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}   style={{ width: "100%", height: "auto"}} />
-          </div>
-        ))}
+        </div>
+  
+       
       </div>
-
-     
-    </div>
-     {/* <div className="slideshowDots" style={{position:'absolute'}}>
-     {images.map((_, idx) => (
-       <div
-         key={idx}
-         className={`slideshowDot${index === idx ? " active" : ""}`}
-         onClick={() => {
-           setIndex(idx);
-         }}
-       ></div>
-     ))}
-   </div> */}
-   </>
-  );
+      
+     </>
+    );
+  } else {
+    return (
+      <>
+      <div className="slideshow" style={{display:'flex',flexGrow:'1'}}>
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, flexGrow:'1' }}
+        >
+          
+          {show.map((background, index) => (
+            <div
+              className="slide"
+              key={index}           
+              // style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
+  
+            >
+             {/* {console.log(background)} */}
+             {/* <p>Testing</p> */}
+              <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}   style={{ width: "100%", height: "auto"}} />
+            </div>
+            
+          ))}
+        
+        </div>
+  
+       
+      </div>
+       {/* <div className="slideshowDots" style={{position:'absolute'}}>
+       {images.map((_, idx) => (
+         <div
+           key={idx}
+           className={`slideshowDot${index === idx ? " active" : ""}`}
+           onClick={() => {
+             setIndex(idx);
+           }}
+         ></div>
+       ))}
+     </div> */}
+     </>
+    );
+  }
+  
 }
 
 export default Slideshow;
