@@ -1,8 +1,9 @@
-/* .container.my-1{
+.container.my-1{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-} */
+    align-items: center;
+}
 
 .inputs{
     padding: 0.25rem;

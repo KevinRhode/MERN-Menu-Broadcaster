@@ -129,16 +129,21 @@ const Dashboard = (props) => {
   return (
     <div className="container">
        <Nav/>
-     <div>
+     <div className="content">
      <p>Home </p>
+     <div>
      <FileUploadComponent addSlide={addSlide}/>
-     
-     {/* {data && (<SlideComponent slides={slides}/>)} */}
+     </div>
+     <div>
      {slides && (<CreateSlideShow slides={slides} addSlideshow={addSlideshow} onFileChange={onFileChange} />)}
+     </div>
+     <div>
      {slideshows && (<EndpointCreator slideshows={slideshows} addEndpoint={addEndpoint} />)}
+     </div>     
+     <div>
      {endpoints && (<EndpointPreview endpoints={endpoints} onEdit={handleEditEndpoint}/>)}
-     {/* {console.log(endpoints)} */}
-      {/* add modal here */}
+     </div>  
+           
       {editingEndpoint && (
         <EditEndpointModal 
           endpoint={editingEndpoint} 
