@@ -15,8 +15,7 @@ const Footer = () => {
     borderRadius: "4px",
     display: 'flex',
     justifyContent:'center',
-    maxWidth:'400px',
-    margin:"auto"
+    maxWidth:'400px'
     
   };
 
