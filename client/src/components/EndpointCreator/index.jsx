@@ -44,7 +44,7 @@ function EndpointCreator(props) {
   // if (slideshowLoading) return <p>Loading...</p>;
 
   return (
-    <div className="ecContainer" style={{border:"black solid 0.15rem", borderRadius:"0.5rem"}}>
+    <div className="ecContainer" >
       
       {props.slideshows.map((slideshow) => (
         <div className="slideshowCasrd" key={slideshow._id} onClick={()=>{

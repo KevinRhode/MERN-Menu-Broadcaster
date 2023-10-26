@@ -43,12 +43,7 @@ const FileUploadComponent = (props) => {
 
   return (
     <div style={{border:"black solid 0.25rem", borderRadius:'0.5rem'}}>
-      <form onSubmit={onSubmit} style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'      
-      }}>
+      <form onSubmit={onSubmit} >
         <div>
           <input type="file" onChange={onFileChange} />
         </div>

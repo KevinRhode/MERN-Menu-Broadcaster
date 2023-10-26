@@ -21,8 +21,7 @@ function Slideshow(props) {
       show.push(element2)
     })
   });
-  // console.log(show);
-  // console.log(props.images);
+ 
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
 
@@ -49,10 +48,10 @@ function Slideshow(props) {
 
   return (
     <>
-    <div className="slideshow" style={{display:'flex',flexGrow:'1'}}>
+    <div className="slideshow">
       <div
         className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)`, flexGrow:'1' }}
+        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >
         
         {show.map((background, index) => (
@@ -62,26 +61,16 @@ function Slideshow(props) {
             // style={{ backgroundImage:`url(${background})`,backgroundSize:'cover'  }}
 
           >
-           {/* {console.log(background)} */}
-           {/* <p>Testing</p> */}
-            <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}   style={{ width: "100%", height: "auto"}} />
+           
+            <img src={`/uploads/${background.filename}.${background.extname}`} alt={background.filename}
+                />
           </div>
         ))}
       </div>
 
      
     </div>
-     {/* <div className="slideshowDots" style={{position:'absolute'}}>
-     {images.map((_, idx) => (
-       <div
-         key={idx}
-         className={`slideshowDot${index === idx ? " active" : ""}`}
-         onClick={() => {
-           setIndex(idx);
-         }}
-       ></div>
-     ))}
-   </div> */}
+     
    </>
   );
 }

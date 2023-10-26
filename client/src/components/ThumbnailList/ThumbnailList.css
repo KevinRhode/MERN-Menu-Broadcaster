@@ -19,7 +19,8 @@
   }
   
   .thumbnail.selected {
-    outline: 3px solid blue; /* Highlight border to show selection */
+    outline: 3px solid blue; 
+    /* Highlight border to show selection */
   }
   
   .checkmark {

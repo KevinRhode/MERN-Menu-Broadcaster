@@ -23,7 +23,7 @@ const { loading, error, data } = useQuery(GET_ENDPOINT,{variables:{getEndpointId
  
 
 return (
-  <div style={{display:'flex'}} className="slideshow-container">
+  <div className="slideshow-container">
     {data.getEndpoint.length === 0 ? (
       <p>No slideshows available</p>
     ) : (
