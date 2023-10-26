@@ -79,8 +79,6 @@ body {
   display: inline-flex;
   height: 100%;
   width: 100%;
-  align-items: center; /* To center the image vertically */
-  justify-content: center; /* To center the image horizontally */
 
 }
 
