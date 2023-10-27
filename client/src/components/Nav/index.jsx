@@ -1,7 +1,9 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWrench,faCheck,faHospital } from '@fortawesome/free-solid-svg-icons';
 
-function Nav() {
+function Nav(props) {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -12,6 +14,10 @@ function Nav() {
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
+          </li>
+          <li className="navItem">
+          <FontAwesomeIcon icon={faHospital} onClick={() => props.infoClicked(true)} />
+            
           </li>
         </ul>
       );
@@ -24,6 +30,12 @@ function Nav() {
             </Link>
           </li>
           <li className="navItem">
+            <Link to="/login">
+              Login
+            </Link>
+          </li>
+          <li className="navItem">
+          <FontAwesomeIcon icon={faWrench} onClick={() => props.infoClicked()} />
             <Link to="/login">
               Login
             </Link>
@@ -43,6 +55,7 @@ function Nav() {
 
       <nav>
         {showNavigation()}
+        
       </nav>
     </header>
   );
