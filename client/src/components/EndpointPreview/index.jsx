@@ -39,7 +39,7 @@ function EndpointPreview(props) {
           <div className={`thumbnail ${imageRatios[endpoint._id] > 1 ? 'landscape' : 'portrait'}`}>
             <Slideshow images={endpoint.slideshows}/>
           </div>
-          <button onClick={() => props.onEdit(endpoint)}>Edit</button>
+          <button onClick={(e) => {props.onEdit(endpoint); e.stopPropagation();}}>Edit</button>
           {/* {selectedImages.includes(slide._id) && <div className="checkmark">✔</div>} */}
         </div>
       ))}
