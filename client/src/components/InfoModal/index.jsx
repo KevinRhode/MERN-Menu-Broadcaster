@@ -51,7 +51,7 @@ const InfoModal = ({ info, onClose }) => {
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <div className="modal-content" onClick={onClose}>
         <h2>Informational</h2>     
         <ReactMarkdown>
           {markdownContent}

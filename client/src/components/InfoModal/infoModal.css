@@ -11,5 +11,9 @@
    /* align-self: center;    */
 }
 pre {
-    text-wrap: wrap;
+    white-space: pre-wrap;      /* CSS3 */
+    word-wrap: break-word;      /* Internet Explorer 5.5+ */
+    overflow-wrap: break-word;  /* Modern browsers */
+    /* text-wrap: wrap; */
+    /* word-wrap: normal; */
   }
