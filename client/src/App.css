@@ -151,9 +151,10 @@ body {
   background-color: #fff;
   padding: 20px;
   width: 80%;
-  max-width: 500px;
+  max-width: 800px;
   border-radius: 10px;
 }
+
 
 .ecContainer {
   display: flex;
@@ -180,4 +181,17 @@ body {
 }
 .endofCard {
   flex-basis: 100%;
+}
+
+.endpoint-list > div {
+  margin: 0.5rem;
+}
+
+nav > ul {
+  list-style-type: none;
+  padding-inline-start: 0.2rem;
+  padding-inline-end: 0.2rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 }

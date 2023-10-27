@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import FileUploadComponent from "../components/FileUploadComponent";
 import EndpointPreview from "../components/EndpointPreview";
 import EditEndpointModal from "../components/EditEndpointModal";
+import InfoModal from "../components/InfoModal";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
@@ -17,6 +18,7 @@ import axios from 'axios'; // Assuming you're using axios for HTTP requests
 
 const Dashboard = (props) => {
   const [editingEndpoint, setEditingEndpoint] = useState(null);  // which endpoint is currently being edited, null if none.
+  const [infoClicked, setInfoClicked] = useState(null);
   const [addSlideToDb, { error:slideError }] = useMutation(ADD_SLIDE);
 
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
@@ -33,6 +35,10 @@ const Dashboard = (props) => {
   const handleEditEndpoint = (endpoint) => {
     setEditingEndpoint(endpoint);
   };
+
+  const handleInfoClicked = (infoClicked) => {
+    setInfoClicked(infoClicked);
+  }
 
   const handleUpdateEndpoint = async (updatedEndpoint) => {
     // Here you can update the endpoint in the state and/or send to the server.
@@ -129,7 +135,7 @@ const Dashboard = (props) => {
   
   return (
     <div className="container">
-       <Nav/>
+       <Nav infoClicked={handleInfoClicked}/>
      <div className="content">
      <p>Home </p>
      <div>
@@ -156,6 +162,7 @@ const Dashboard = (props) => {
           onClose={() => setEditingEndpoint(null)}
         />
       )}
+      {infoClicked && (<InfoModal info={infoClicked} onClose={() => setInfoClicked(null)}/>)}
       </div>
        
     </div>

@@ -1,0 +1,15 @@
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 98vh;
+    overflow-y: auto;
+
+}
+.modal-content > button {
+   text-align: center;
+   margin: 0.25rem 0;
+   /* align-self: center;    */
+}
+pre {
+    text-wrap: wrap;
+  }
