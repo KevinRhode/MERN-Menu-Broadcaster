@@ -137,22 +137,25 @@ const Dashboard = (props) => {
     <div className="container">
        <Nav infoClicked={handleInfoClicked}/>
      <div className="content">
-     <p>Home </p>
-     <div>
+    
+     <div className="content-inputs">
+     <div className="content-inputs-first">
      <FileUploadComponent addSlide={addSlide}/>
      </div>
      <div>
      {slides && (<CreateSlideShow slides={slides} addSlideshow={addSlideshow} onFileChange={onFileChange} />)}
      </div>
-     <div>
+     </div>
+     <div className="content-create">
+     <div className="content-create-select">
      {slideshows && (<EndpointCreator slideshows={slideshows} addEndpoint={addEndpoint} />)}
      </div>     
-     <div>
+     <div className="content-create-ep">
      {endpoints && (<EndpointPreview endpoints={endpoints} onEdit={handleEditEndpoint}/>)}
      </div>  
-     <div className="footerDiv">
-      <Footer/>
      </div>
+     
+     
            
       {editingEndpoint && (
         <EditEndpointModal 
@@ -164,7 +167,9 @@ const Dashboard = (props) => {
       )}
       {infoClicked && (<InfoModal info={infoClicked} onClose={() => setInfoClicked(null)}/>)}
       </div>
-       
+      <div className="footerDiv">
+      <Footer/>
+     </div>
     </div>
   );
 };

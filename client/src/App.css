@@ -1,6 +1,6 @@
 :root {
   --header-background-color: #629460;
-  --content-background-color: #C9F2C7;
+  --content-background-color: #c9f2c7;
   --content-accent-color: #243119;
   --border-style-accent: solid 0.15rem var(--content-accent-color);
 }
@@ -10,7 +10,7 @@
   display: flex;
   flex-grow: 1; /* will cause vertical images to grow when horz, formats fine so far*/
 }
-html{
+html {
   min-height: 100vh;
 }
 
@@ -20,10 +20,10 @@ body {
   display: flex;
   margin: 0;
 }
-.navHeader{
+.navHeader {
   background-color: var(--header-background-color);
 }
-.container{
+.container {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -40,7 +40,7 @@ body {
   background-color: var(--header-background-color);
   color: var(--content-background-color);
   display: flex;
-  flex-grow: 1;  
+  flex-grow: 1;
   align-items: center;
   justify-content: center;
 }
@@ -99,9 +99,8 @@ body {
 }
 .slideshow img {
   width: 100%;
-  height: auto;  
+  height: auto;
   object-fit: cover; /* Will make sure the image covers the slide without distortion */
-
 }
 .slideshowSlider {
   flex-grow: 1;
@@ -116,7 +115,6 @@ body {
   display: inline-flex;
   height: 100%;
   width: 100%;
-
 }
 
 /* Slide thumbnail */
@@ -130,8 +128,6 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
-
-
 
 .modal {
   position: fixed;
@@ -153,10 +149,9 @@ body {
   border-radius: 10px;
 }
 
-
 .ecContainer {
   display: flex;
-  flex-wrap: wrap;  
+  flex-wrap: wrap;
   border: var(--content-accent-color);
   border-radius: "0.5rem";
 }
@@ -181,7 +176,12 @@ body {
   border: solid 0.15rem var(--header-background-color);
   color: var(--content-accent-color);
   font-weight: bold;
-  background-image: linear-gradient(45deg, transparent 40%, rgba(172, 236, 161, 0.6) 50%, transparent 60%);
+  background-image: linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(172, 236, 161, 0.6) 50%,
+    transparent 60%
+  );
   /* background-image: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%); */
   background-size: 200% 100%;
   animation: gleam 1.5s ease-in-out infinite;
@@ -206,8 +206,7 @@ body {
 @media screen and (min-width: 395px) {
   .endpoint-list {
     flex-direction: row;
-  }  
-  
+  }
 }
 
 .endpoint-list > div {
@@ -231,4 +230,62 @@ nav > ul {
   font-size: 1.5rem;
   display: flex;
   justify-content: space-between;
+}
+.content-inputs {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 694px) {
+  .content-inputs {
+    flex-direction: row;
+    /* flex-grow: 1; */
+  }
+  .content-inputs > div {
+    flex-grow: 1;
+  }
+  .content-inputs-first {
+    display: flex;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .content-inputs {
+    flex-direction: row;
+    /* flex-grow: 1; */
+  }
+  .content-inputs > div {
+    flex-grow: 1;
+    max-width: 75%;
+  }
+  .content-inputs-first {
+    display: flex;
+    flex-grow: 1;
+    max-width: 25%;
+  }
+}
+.content-create {
+  display: flex;
+  flex-direction: column;
+}
+.content-create-ep {
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 1280px) {
+  .content-create {
+    flex-direction: row;
+  }
+  /* .content-create > div {
+  } */
+  .content-create-select {
+    display: flex;
+    flex-grow: 1;
+    max-width: 25%;
+  }
+  .ecContainer {
+    display: block;
+    flex-grow: 1;
+  }
+  .content-create-ep {
+    max-width: 75%;
+  }
 }
