@@ -45,12 +45,13 @@ body {
   justify-content: center;
 }
 
-/* @media screen and (min-width: 600px) {
+/*
+@media screen and (min-width: 600px) {
   .container {
     flex-direction: row;
-  }
-  
-} */
+  }  
+}
+*/
 
 .logo {
   height: 6em;
@@ -130,10 +131,7 @@ body {
   justify-content: space-evenly;
 }
 
-.endpoint-list {
-  display: flex;
-  flex-wrap: wrap;
-}
+
 
 .modal {
   position: fixed;
@@ -162,10 +160,7 @@ body {
   border: var(--content-accent-color);
   border-radius: "0.5rem";
 }
-.accentBorder {
-  border: var(--border-style-accent);
-  border-radius: 0.5rem;
-}
+
 .slideshowCasrd {
   border: solid 0.15rem var(--content-accent-color);
   border-radius: 0.5rem;
@@ -191,6 +186,7 @@ body {
   background-size: 200% 100%;
   animation: gleam 1.5s ease-in-out infinite;
 }
+/* the animate for slideshow list items. */
 @keyframes gleam {
   0% {
     background-position: -200% 0;
@@ -199,11 +195,33 @@ body {
     background-position: 200% 0;
   }
 }
+.endpoint-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.endpoint-list > div {
+  min-width: 182px;
+}
+@media screen and (min-width: 395px) {
+  .endpoint-list {
+    flex-direction: row;
+  }  
+  
+}
 
 .endpoint-list > div {
   margin: 0.5rem;
   border: solid 0.15rem var(--content-accent-color);
   border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 245px;
+  padding: 0.25rem;
+}
+.endpoint-list > div button {
+  border: solid 0.15rem var(--content-accent-color);
+  justify-self: flex-end;
 }
 
 nav > ul {

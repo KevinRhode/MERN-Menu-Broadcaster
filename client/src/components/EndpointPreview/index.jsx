@@ -25,17 +25,13 @@ function EndpointPreview(props) {
 
   return (
     <div >
-    <div className="endpoint-list">
-      {/* {console.log(props)} */}
+    <div className="endpoint-list">      
       {props.endpoints.map((endpoint) => (
         <div
-
-          key={endpoint._id}
-          // className={`endpoint ${selectedImages.includes(slide._id) ? 'selected' : ''}`}
-          // onClick={() => handleImageClick(slide._id)}
-          // style={{ backgroundImage: `url(${'/uploads/'+slide.filename + '.' +slide.extname})` }}
+          key={endpoint._id}          
         >
-          {endpoint.deviceId}
+          <label>Device ID: {endpoint.deviceId}</label>
+          
           <div className={`thumbnail ${imageRatios[endpoint._id] > 1 ? 'landscape' : 'portrait'}`}>
             <Slideshow images={endpoint.slideshows}/>
           </div>

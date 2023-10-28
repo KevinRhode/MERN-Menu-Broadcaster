@@ -57,7 +57,8 @@ function EndpointCreator(props) {
             console.log(false);
           }
         }}>
-          <input
+          {
+          /* <input
             type="checkbox"
             value={slideshow._id}
             onChange={(e) => {
@@ -67,7 +68,8 @@ function EndpointCreator(props) {
                 setSelectedSlideshows(selectedSlideshows.filter(id => id !== e.target.value));
               }
             }}
-          />
+          /> */
+          }
           
           
           <p>{slideshow.slideshowName}</p>
