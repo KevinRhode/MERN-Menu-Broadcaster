@@ -29,6 +29,35 @@ Node.js - Verison 16.18.0
   
 
 ## Usage
+
+inhouse demo -
+npm i
+npm run develop
+
+host has been enabled and will show in the terminal to which hostname to navigate to on devices
+
+login or signup
+
+upload your menu images and promos, PNG or JPEG
+
+create slideshows for menu images, and rotating slides. 
+
+create an endpoint with a unique ID and slideshow's'
+
+see instructions below for more detail on creation.
+
+
+## Current Roadmap
+```md
+Allow slideshows to limit shows based on the day
+
+Specials - boardcast to non-point of sale tvs
+  the specials show will be added to the endpoint
+
+Bug Fixes
+
+```
+## Notes
 ```md
 Menu Software
 Software to display Slides/Menus of our choosing to each Device
@@ -43,22 +72,6 @@ Upselling
     broadcast groups images, names, as you enter
     welcomes
     more frequently updated information
-```
-## Current Roadmap
-```md
-Build server/client and display page
-tv browser to displayed page
-style page
-load Images, slides
-    Working prototype
-```
-## Notes
-```md
-Needs:
-Update Slide
-Update SlideShow
-Update Endpoints
-Display Endpoints
 ```
 ## Preview
 
@@ -85,7 +98,7 @@ if you wish to edit a slide show, with the wrench icon to the right of the slide
 
 once set hit update slideshow. you will need to hit back to get back to the home atm. the slide show should now be updated.
 
-
+Location specific
 Navigating to Endpoints -
 LG TV -
 	using the TV's web browser app. (TV firmware should be updated to atleast 5.0.x)
