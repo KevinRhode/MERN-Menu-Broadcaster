@@ -30,9 +30,9 @@ Node.js - Verison 16.18.0
 
 ## Usage
 
-inhouse demo -
-npm i
-npm run develop
+inhouse demo -  
+npm i  
+npm run develop  
 
 host has been enabled and will show in the terminal to which hostname to navigate to on devices
 
