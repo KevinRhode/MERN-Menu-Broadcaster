@@ -32,10 +32,12 @@ function EndpointCreator(props) {
   };
   const handleSubmit = async () => {
     try {
-      const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });  
-      //console.log(result.data.addEndpoint);
-      // props.addEndpoint(result.data.addEndpoint);    
-      console.log("Endpoint created:", result.data.addEndpoint);
+      if (selectedSlideshows.length > 0) {
+        const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });    
+        console.log("Endpoint created:", result.data.addEndpoint);
+      }
+      console.log("Select a slide show");
+      
     } catch (err) {
       console.error("Failed to create endpoint:", err);
     }
