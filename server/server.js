@@ -80,9 +80,12 @@ const startApolloServer = async () => {
   });
   app.delete("/uploads/:id", (req, res, next) =>{
 // Extract the file ID or name from the request parameters
-const filePath = path.join(__dirname, 'uploads', req.params.id);
+const filePath = path.join(__dirname, '/public/uploads/', req.params.id);
 
     // Check if the file exists
+    console.log(__dirname);
+    console.log(req.params.id);
+    
     fs.exists(filePath, (exists) => {
         if (!exists) {
             return res.status(404).json({
