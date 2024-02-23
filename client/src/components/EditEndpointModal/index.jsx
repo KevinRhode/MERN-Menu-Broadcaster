@@ -44,8 +44,13 @@ const EditEndpointModal = ({ endpoint, slideshows, onUpdate, onClose }) => {
     if (_.isEqual(updatedEndpoint, endpoint)) {
       console.log("The state hasn't changed.");
     } else {
+
       console.log("The state has changed.");
-      onUpdate(updatedEndpoint); // Call parent's onUpdate function to inform about the change.
+
+      if (updatedEndpoint.slideshows.length > 0) {
+        onUpdate(updatedEndpoint); // Call parent's onUpdate function to inform about the change.
+      }
+      
     }
 
     onClose(); // Close the modal
