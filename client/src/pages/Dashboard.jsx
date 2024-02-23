@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 
 import CreateSlideShow from "./CreateSlideShow";
 import { ADD_SLIDE, UPDATE_SLIDE, UPDATE_ENDPOINT } from "../utils/mutations";
-import { QUERY_USER, GET_ALL_SLIDES, GET_ALL_ENDPOINTS } from '../utils/queries';
+import { QUERY_USER, GET_SLIDE, GET_ALL_SLIDES, GET_ALL_ENDPOINTS } from '../utils/queries';
 import { useState } from "react";
 import EndpointCreator from "../components/EndpointCreator";
 
@@ -22,6 +22,7 @@ const Dashboard = (props) => {
   const [addSlideToDb, { error:slideError }] = useMutation(ADD_SLIDE);
 
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
+  
   const { loading, error, data } = useQuery(GET_ALL_SLIDES);   
   const { loading: endpointLoading, error: err,data: endpointData} = useQuery(GET_ALL_ENDPOINTS)
   
@@ -113,8 +114,9 @@ const Dashboard = (props) => {
     formData.append('file', e.target.files[0]);
     
     try {
+     deleteFile(e.target.name);
      updateFile(formData,e.target.id);
-
+     
       //setMessage(response.data.message);
     } catch (error) {
       //setMessage(error.response.data.error);

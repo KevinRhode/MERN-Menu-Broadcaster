@@ -90,7 +90,7 @@ function ThumbnailList(props) {
           {selectedImages.length === 1  && selectedImages.includes(slide._id) ? (<div onClick={(e)=>handleEdit(slide._id,e)} name='id' className='editImg'>            
             <form onSubmit={onSubmit}>
               <div> 
-                <input id={slide._id} ref={fileInputRef} onChange={props.onFileChange} className='hidden' type='file'/>
+                <input id={slide._id} ref={fileInputRef} name={slide.filename + '.'+ slide.extname} onChange={props.onFileChange} className='hidden' type='file'/>
                 </div>
             <div> 
               <FontAwesomeIcon icon={faWrench} />

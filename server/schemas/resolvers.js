@@ -15,6 +15,12 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    getSlide: async (parent, {id}, context)=>{
+      if (context.user) {
+        const slide = await Slide.findById(id);
+        return slide;
+      }
+    },
     getAllslides: async (parent, args, context)=>{
       if (context.user) {
         const slides = await Slide.find();

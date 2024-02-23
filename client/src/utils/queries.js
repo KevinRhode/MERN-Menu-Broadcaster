@@ -12,6 +12,16 @@ export const QUERY_USER = gql`
       }
 `;
 
+export const GET_SLIDE = gql`
+{
+  getSlide {
+    _id
+    filename
+    extname
+  }
+}
+`;
+
 export const GET_ALL_SLIDES = gql`
 {
   getAllslides {
