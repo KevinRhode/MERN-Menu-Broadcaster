@@ -35,6 +35,7 @@ function EndpointCreator(props) {
       if (selectedSlideshows.length > 0) {
         const result = await addEndpoint({ variables: { slideshows: selectedSlideshows, deviceId: formState.deviceID } });    
         console.log("Endpoint created:", result.data.addEndpoint);
+        window.location.reload();
       }
       console.log("Select a slide show");
       
