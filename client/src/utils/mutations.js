@@ -111,3 +111,10 @@ mutation updateEndpoint($endpointId: ID, $slideshows: [ID]!, $deviceId: String!)
   }
 }
 `;
+
+export const DELETE_SLIDE = gql`
+mutation DeleteSlide($slideId: ID!) {
+  deleteSlide(slideId: $slideId){
+    _id
+  }
+}`;

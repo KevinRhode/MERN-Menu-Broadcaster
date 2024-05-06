@@ -7,7 +7,7 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 
 const resolvers = {
-  Query: {   
+  Query: {
     user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
@@ -15,44 +15,44 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    getSlide: async (parent, {id}, context)=>{
+    getSlide: async (parent, { id }, context) => {
       if (context.user) {
         const slide = await Slide.findById(id);
         return slide;
       }
     },
-    getAllslides: async (parent, args, context)=>{
+    getAllslides: async (parent, args, context) => {
       if (context.user) {
         const slides = await Slide.find();
         return slides;
       }
     },
-    getAllslideshow: async (parents,args, context)=>{
+    getAllslideshow: async (parents, args, context) => {
       if (context.user) {
         const slideshows = await Slideshow.find().populate('slides');
         return slideshows;
       }
     },
-    getSlideshow: async (parents,{id}, context) =>{
+    getSlideshow: async (parents, { id }, context) => {
       if (context.user) {
-      const slideshow = await Slideshow.findById(id).populate('slides');
-      return slideshow;
-    }
+        const slideshow = await Slideshow.findById(id).populate('slides');
+        return slideshow;
+      }
     },
-    getEndpoint: async (parent, {id}) => {
-      
-        const endpoint = await Endpoint.findOne({deviceId:id}).populate({path:'slideshows',populate:{path:'slides'}});
-        return endpoint;
-      
+    getEndpoint: async (parent, { id }) => {
+
+      const endpoint = await Endpoint.findOne({ deviceId: id }).populate({ path: 'slideshows', populate: { path: 'slides' } });
+      return endpoint;
+
     },
     getAllEndpoints: async (parent, args, context) => {
       // if (context.user) {
-        const endpoints = await Endpoint.find().populate({path:'slideshows',populate:{path:'slides'}});
-        return endpoints;
+      const endpoints = await Endpoint.find().populate({ path: 'slideshows', populate: { path: 'slides' } });
+      return endpoints;
       // }
     }
 
-    
+
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -65,39 +65,45 @@ const resolvers = {
         const slide = await Slide.create(args);
         return slide;
       }
-    }, 
-    updateSlide: async (parent, {_id:id, filename, extname}, context) => {
+    },
+    updateSlide: async (parent, { _id: id, filename, extname }, context) => {
       if (context.user) {
-        const updatedSlide = await Slide.findByIdAndUpdate({_id:id},{id,filename,extname},{new:true});
+        const updatedSlide = await Slide.findByIdAndUpdate({ _id: id }, { id, filename, extname }, { new: true });
         return updatedSlide;
       }
     },
-    
-    addSlideshow: async (parent, args, context)=>{
+    deleteSlide: async (parent, { slideId }, context) => {
+      if (context.user) {
+        const deletedSlide = await Slide.deleteOne({ _id: slideId });
+        return deletedSlide;
+      }
+    },
+
+    addSlideshow: async (parent, args, context) => {
       if (context.user) {
         const slideshow = await Slideshow.create(args);
         return slideshow;
       }
     },
-    updateSlideshow: async (parent, {_id, slides, comments, slideshowName}, context) => {
+    updateSlideshow: async (parent, { _id, slides, comments, slideshowName }, context) => {
       if (context.user) {
-        const updatedSlideshow = await Slideshow.findByIdAndUpdate({_id:_id},{slides,comments,slideshowName},{new:true});
+        const updatedSlideshow = await Slideshow.findByIdAndUpdate({ _id: _id }, { slides, comments, slideshowName }, { new: true });
         return updatedSlideshow;
       }
     },
-    
-    addEndpoint: async (parent, args, context)=> {
-      if (context.user) {
-        const endpoint = await Endpoint.create(args);  
 
-        const endpoint2 = await Endpoint.findOne({deviceId:args.deviceId}).populate({path:'slideshows',populate:{path:'slides'}});
+    addEndpoint: async (parent, args, context) => {
+      if (context.user) {
+        const endpoint = await Endpoint.create(args);
+
+        const endpoint2 = await Endpoint.findOne({ deviceId: args.deviceId }).populate({ path: 'slideshows', populate: { path: 'slides' } });
         return endpoint2;
       }
       throw AuthenticationError;
     },
-    updateEndpoint: async (parent, {_id, deviceId, slideshows}, context) => {
+    updateEndpoint: async (parent, { _id, deviceId, slideshows }, context) => {
       if (context.user) {
-        const updatedEndpoint = await Endpoint.findByIdAndUpdate({_id},{slideshows,deviceId},{new:true});
+        const updatedEndpoint = await Endpoint.findByIdAndUpdate({ _id }, { slideshows, deviceId }, { new: true });
         return updatedEndpoint;
       }
     },
@@ -108,7 +114,7 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-    
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
