@@ -13,9 +13,9 @@
 
 ## User Story
 ```md
-AS A user
-I WANT an software to allow my business to change menuboards, and specials from location 
-SO THAT I can limit time needed and offer an easy solution to making changes
+AS A enduser
+I WANT an software to allow my business to change menuboards, and specials per location/device 
+SO THAT I can limit time needed making changes and setup future events
 ```
 
 ## Installation
@@ -29,22 +29,20 @@ Node.js - Verison 16.18.0
   
 
 ## Usage
-
-inhouse demo -  
+```md
+Inhouse demo -  
+local pc must have mongoDb installed
 npm i  
 npm run develop  
+```
 
-host has been enabled and will show in the terminal to which hostname to navigate to on devices
-
-login or signup
-
-upload your menu images and promos, PNG or JPEG
-
-create slideshows for menu images, and rotating slides. 
-
-create an endpoint with a unique ID and slideshow's'
-
-see instructions below for more detail on creation.
+* host has been enabled and will show in the terminal to which hostname 
+* to navigate to on devices
+* login or signup
+* upload your menu images and promos, PNG or JPEG
+* create slideshows for menu images, and rotating slides. 
+* create an endpoint with a unique ID and slideshow's'
+* see instructions below for more detail on creation.
 
 
 ## Current Roadmap
@@ -103,21 +101,11 @@ Navigating to Endpoints -
 LG TV -
 	using the TV's web browser app. (TV firmware should be updated to atleast 5.0.x)
 
-	current address: 192.168.3.84:3000/ss/1
+  example: private IP
+	address: 192.168.x.x:3000/ss/deviceId
 
-	1 - being the deviceID of the endpoint you want the TV to display.
-
-	Front Left Entrance Tv's 1
-	Front Left Hanging Tv 3
-	Front Right Hanging Tv 4
-
-	once page is loading, press ok on the TV remote for the navigation bar to hide itself.
-
-	POS Menu Endpoints: (this is to be done on the PC, using google chrome, and setting the page to fullscreen with f11.)
-	 6 - Reg Prices, w/ Card Fee, buffet
-	 7 - Works Best Deal Package
+  being the deviceID of the endpoint you want the TV to display. once page is loading, press ok on the TV remote for the navigation bar to hide itself (cursor can not be on the nav bar).
+	 
 ```
 
-
 ## Credits
--[styling for slideshow list](https://stackoverflow.com/questions/37659558/move-last-element-to-next-line-in-a-flex-container)
