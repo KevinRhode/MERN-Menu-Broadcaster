@@ -7,7 +7,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
 import CreateSlideShow from "./CreateSlideShow";
-import { ADD_SLIDE, UPDATE_SLIDE, UPDATE_ENDPOINT } from "../utils/mutations";
+import { ADD_SLIDE, UPDATE_SLIDE, UPDATE_ENDPOINT, DELETE_SLIDE } from "../utils/mutations";
 import { QUERY_USER, GET_SLIDE, GET_ALL_SLIDES, GET_ALL_ENDPOINTS } from '../utils/queries';
 import { useState } from "react";
 import EndpointCreator from "../components/EndpointCreator";
@@ -20,7 +20,7 @@ const Dashboard = (props) => {
   const [editingEndpoint, setEditingEndpoint] = useState(null);  // which endpoint is currently being edited, null if none.
   const [infoClicked, setInfoClicked] = useState(null);
   const [addSlideToDb, { error:slideError }] = useMutation(ADD_SLIDE);
-
+  const [deleteSlideToDB, {error:slideDelError}] = useMutation(DELETE_SLIDE);
   const { loading: userLoading, data: userData } = useQuery(QUERY_USER);
   
   const { loading, error, data } = useQuery(GET_ALL_SLIDES);   
@@ -127,6 +127,19 @@ const Dashboard = (props) => {
   const addSlide = (slide) => {
     setSlides([...slides, slide]);
   };
+  const delSlide = (slideId, delVal) => {   
+    //try to delete from server before database
+    try {
+      deleteFile(delVal);
+    } catch (error) {
+      return error;
+    }
+    finally{
+      setSlides(slides => slides.filter(slide => slide._id !== slideId));
+    }
+    
+    
+  }
   const addSlideshow = (slideshow)=> {
     setSlideshows([...slideshows,slideshow]);
   }
@@ -145,7 +158,7 @@ const Dashboard = (props) => {
      <FileUploadComponent addSlide={addSlide}/>
      </div>
      <div>
-     {slides && (<CreateSlideShow slides={slides} addSlideshow={addSlideshow} onFileChange={onFileChange} />)}
+     {slides && (<CreateSlideShow slides={slides} delSlide={delSlide} addSlideshow={addSlideshow} onFileChange={onFileChange} />)}
      </div>
      </div>
      <div className="content-create">

@@ -49,6 +49,7 @@ const typeDefs = `
     addSlideshow(slides: [ID]!, comments: String,slideshowName: String!): Slideshow
     updateUser(firstName: String, lastName: String, email: String, password: String): User    
     updateSlide(_id: ID,filename: String, extname: String): Slide
+    deleteSlide(slideId: ID!): Slide
     updateSlideshow(_id: ID,slides: [ID], comments: String,slideshowName: String): Slideshow
     login(email: String!, password: String!): Auth
   }

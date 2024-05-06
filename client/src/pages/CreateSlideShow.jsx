@@ -41,7 +41,7 @@ const CreateSlideShow = (props) => {
   return (
     <div className="container"> 
       
-      <ThumbnailList images={listState} btn={'Create'} formState={formState} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
+      <ThumbnailList images={listState} delSlide={props.delSlide} btn={'Create'} formState={formState} handleCreate={handleCreate} handleChange={handleChange} onFileChange={props.onFileChange}/>
 
      </div>
   );

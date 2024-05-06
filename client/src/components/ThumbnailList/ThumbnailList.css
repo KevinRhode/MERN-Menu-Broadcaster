@@ -66,12 +66,22 @@
 .editImg {
   position: absolute;
   top: 5px;
-  right: 40px;
+  Left: 5px;
   font-size: 1.18rem;
   background-color: rgba(255, 255, 255, 0.8);
   padding: 3px 8px;
   border-radius: 15px;
 }
+.deleteImg {
+  position: absolute;
+  top: 5px;
+  Left: 50px;
+  font-size: 1.18rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 3px 8px;
+  border-radius: 15px;
+}
+
 
 button {
   min-width: 8rem;
