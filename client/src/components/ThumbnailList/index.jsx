@@ -5,6 +5,7 @@ import { faWrench, faCheck, faTrashAlt } from '@fortawesome/free-solid-svg-icons
 
 import { UPDATE_SLIDESHOW, DELETE_SLIDE } from '../../utils/mutations'
 import { useMutation } from '@apollo/client';
+import ConfirmationModal from '../ConfirmationModal';
 
 
 
@@ -12,6 +13,7 @@ import { useMutation } from '@apollo/client';
 function ThumbnailList(props) {
 
   const loadedSelected = props.selectedImages;
+  const [showModal, setShowModal] = useState(false);
   const [deleteSlide, { loading, error }] = useMutation(DELETE_SLIDE);
   const newSelectedImages = loadedSelected ? loadedSelected.slides.map(slide => slide._id) : [];
   const [formsState, setFormsState] = useState({ slideshowName: loadedSelected ? loadedSelected.slideshowName : '' });
@@ -31,9 +33,14 @@ function ThumbnailList(props) {
     img.src = imageUrl;
   }
 
+  const promptDelete = (slideId, delVal) => {
+    setShowModal(true);
+  }
   const handleDelete = async (slideId, delVal) => {
+    
     const gqlResponse = await deleteSlide({ variables: { slideId } });
     props.delSlide(slideId, delVal);
+    setShowModal(false); // Close the modal
   }
 
   const handleImageClick = (id) => {
@@ -84,7 +91,7 @@ function ThumbnailList(props) {
                 </div>
               </form>
             </div>) : (<></>)}
-            {selectedImages.length === 1 && selectedImages.includes(slide._id) ? (<div onClick={(e) => handleDelete(slide._id,(slide.filename + '.' + slide.extname))} name='del' className='deleteImg'>
+            {selectedImages.length === 1 && selectedImages.includes(slide._id) ? (<div onClick={()=> promptDelete()} name='del' className='deleteImg'>
 
 
 
@@ -92,6 +99,15 @@ function ThumbnailList(props) {
 
 
             </div>) : (<></>)}
+            {showModal && (
+        <ConfirmationModal
+          title="Confirm Deletion"
+          onClose={() => setShowModal(false)}
+          onConfirm={() => handleDelete(slide._id,(slide.filename + '.' + slide.extname))}
+        >
+          Are you sure you want to delete this slide?
+        </ConfirmationModal>
+      )}
           </div>
         ))}
 
