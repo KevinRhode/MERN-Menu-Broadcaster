@@ -5,7 +5,7 @@ import "./confirmationModal.css";
 // Props are expanded to include onConfirm and children for custom message rendering
 const ConfirmationModal = ({ title, children, onClose, onConfirm }) => {
   return (
-    <div className="modal">
+    <div className="modal" onClick={(e) => e.stopPropagation()}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <h2>{title || 'Informational'}</h2>     
         {children ? (
